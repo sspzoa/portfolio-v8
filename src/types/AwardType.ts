@@ -5,5 +5,6 @@ export interface AwardType {
     name?: { title: { plain_text: string }[] }
     description?: { rich_text: { plain_text: string }[] }
     date?: { date: { start: string } }
+    medal?: { select: { name: "Gold" | "Silver" | "Bronze" } }
   }
 }

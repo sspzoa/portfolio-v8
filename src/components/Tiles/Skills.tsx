@@ -11,6 +11,7 @@ const SkillsGrid = styled.div`
   gap: 1rem;
   justify-items: center;
   align-items: center;
+  padding: 0.5rem;
 `
 
 export function Skills() {
@@ -20,7 +21,7 @@ export function Skills() {
     return (
       <Tile title="Skills">
         <SkillsGrid>
-          {Array.from({ length: 8 }).map((_, index) => (
+          {Array.from({ length: 12 }).map((_, index) => (
             <Skeleton key={index} width={37} height={37} borderRadius="999px" />
           ))}
         </SkillsGrid>

@@ -37,7 +37,7 @@ export function Skills() {
               <Image
                 src={skill.properties.icon.files[0].file.url}
                 title={skill.properties.name?.title[0]?.plain_text}
-                alt="Skill icon"
+                alt={skill.properties.name?.title[0]?.plain_text || ""}
                 width={32}
                 height={32}
                 draggable={false}

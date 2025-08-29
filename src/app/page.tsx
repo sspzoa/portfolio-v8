@@ -56,6 +56,9 @@ const Row = styled.div`
   flex-direction: row;
   gap: 1rem;
   width: 100%;
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
 `
 
 const Column = styled.div`

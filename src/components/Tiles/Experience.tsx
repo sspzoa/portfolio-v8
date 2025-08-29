@@ -130,7 +130,7 @@ export function Experience() {
               </Content>
             </TitleArea>
             <DetailText>
-              {experience.properties.description.rich_text[0].plain_text}
+              {experience.properties.description?.rich_text[0].plain_text}
             </DetailText>
           </Card>
         ))}

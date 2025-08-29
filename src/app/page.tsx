@@ -1,7 +1,14 @@
 "use client"
 
 import styled from "@emotion/styled"
-import { Tile } from "@/components/common/Tile"
+import { Footer } from "@/components/Footer"
+import { AboutMe } from "@/components/Tiles/AboutMe"
+import { Skills } from "@/components/Tiles/Skills"
+import { Experience } from "@/components/Tiles/Experience"
+import { Awards } from "@/components/Tiles/Awards"
+import { Certificates } from "@/components/Tiles/Certificates"
+import { Projects } from "@/components/Tiles/Projects"
+import { Contributions } from "@/components/Tiles/Contributions"
 
 const Container = styled.div`
   display: flex;
@@ -41,6 +48,8 @@ const TileArea = styled.div`
   gap: 1rem;
   width: 100%;
   max-width: 1000px;
+  margin-bottom: 8rem;
+  padding: 0 1rem;
 `
 const Row = styled.div`
   display: flex;
@@ -69,18 +78,23 @@ export default function Home() {
         </TitleText>
       </HeroArea>
       <TileArea>
-        <Tile title="About">asdf</Tile>
+        <AboutMe />
         <Row>
           <Column>
-            <Tile title="About">asdf</Tile>
-            <Tile title="About">asdf</Tile>
+            <Skills />
+            <Experience />
           </Column>
           <Column>
-            <Tile title="About">asdf</Tile>
-            <Tile title="About">asdf</Tile>
+            <Awards />
+            <Certificates />
           </Column>
         </Row>
       </TileArea>
+      <TileArea>
+        <Contributions />
+        <Projects />
+      </TileArea>
+      <Footer />
     </Container>
   )
 }

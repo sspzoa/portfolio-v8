@@ -3,6 +3,7 @@ import "./globals.css"
 import React from "react"
 import { Analytics } from "@vercel/analytics/next"
 import { SpeedInsights } from "@vercel/speed-insights/next"
+import { Providers } from "@/providers/providers"
 
 export const metadata: Metadata = {
   title: "sspzoa.io",
@@ -26,7 +27,7 @@ export default function RootLayout({
       <body className="antialiased">
         <Analytics />
         <SpeedInsights />
-        {children}
+        <Providers>{children}</Providers>
       </body>
     </html>
   )

@@ -6,7 +6,7 @@ const TileContainer = styled.div`
   padding: 1.5rem;
   transition: transform 0.3s ease-in-out;
   &:hover {
-    transform: scale(1.01);
+    transform: scale(1.025);
   }
 `
 const TileTitle = styled.h2`

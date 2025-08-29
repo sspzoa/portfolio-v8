@@ -92,8 +92,8 @@ const Description = styled.p`
 `
 
 const DetailText = styled.div`
-  font-size: 1rem;
-  font-weight: 600;
+  font-size: 0.875rem;
+  font-weight: 500;
   line-height: 1.6;
   white-space: pre-line;
 `

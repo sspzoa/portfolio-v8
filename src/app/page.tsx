@@ -39,8 +39,8 @@ const LogoImage = styled.img`
     box-shadow: 0 0 24px #6d87a8;
   }
   @media (max-width: 768px) {
-    width: 150px;
-    height: 150px;
+    width: 140px;
+    height: 140px;
   }
 `
 
@@ -48,7 +48,7 @@ const TitleText = styled.h1`
   font-size: 2.5rem;
   font-weight: 900;
   @media (max-width: 768px) {
-    font-size: 2rem;
+    font-size: 1.75rem;
   }
 `
 
@@ -71,6 +71,13 @@ const Row = styled.div`
   }
 `
 
+const Contacts = styled.div`
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  width: 100%;
+`
+
 const Column = styled.div`
   display: flex;
   flex-direction: column;
@@ -89,7 +96,7 @@ export default function Home() {
             Seungpyo Suh
           </span>{" "}
         </TitleText>
-        <Row
+        <Contacts
           style={{
             justifyContent: "center",
           }}
@@ -117,7 +124,7 @@ export default function Home() {
           >
             <FontAwesomeIcon icon={faEnvelope} size="2xl" />
           </a>
-        </Row>
+        </Contacts>
       </HeroArea>
       <TileArea>
         <AboutMe />

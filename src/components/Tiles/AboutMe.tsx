@@ -2,8 +2,8 @@ import { Tile } from "@/components/common/Tile"
 import styled from "@emotion/styled"
 
 const Description = styled.span`
-  font-size: 1rem;
-  font-weight: 600;
+  font-size: 0.875rem;
+  font-weight: 500;
   line-height: 1.6;
 `
 

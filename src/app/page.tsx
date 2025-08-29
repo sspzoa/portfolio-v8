@@ -69,7 +69,7 @@ export default function Home() {
   return (
     <Container>
       <HeroArea>
-        <LogoImage src="/sspzoa_logo.svg" alt="sspzoa Logo" />
+        <LogoImage src="/sspzoa_logo.svg" alt="sspzoa Logo" draggable={false} />
         <TitleText>
           <span>sspzoa</span>{" "}
           <span style={{ color: "var(--content-standard-tertiary)" }}>

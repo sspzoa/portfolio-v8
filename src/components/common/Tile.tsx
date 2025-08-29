@@ -1,4 +1,5 @@
 import styled from "@emotion/styled"
+import React from "react"
 
 const TileContainer = styled.div`
   background-color: var(--components-fill-standard-primary);
@@ -16,10 +17,12 @@ const TileTitle = styled.h2`
   margin-bottom: 1.5rem;
 `
 
-export const Tile: React.FC<{ children: React.ReactNode; title: string }> = ({
-  children,
-  title,
-}) => {
+interface TileProps {
+  children: React.ReactNode
+  title: string
+}
+
+export const Tile: React.FC<TileProps> = ({ children, title }) => {
   return (
     <TileContainer>
       <TileTitle>{title}</TileTitle>

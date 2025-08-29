@@ -9,7 +9,7 @@ const showSideProjectsAtom = atom(false)
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 2.75rem;
+  gap: 4.75rem;
   padding: 0.5rem;
 `
 

@@ -10,7 +10,7 @@ const Container = styled.div`
   padding: 0.5rem;
 `
 
-const AwardCard = styled.div`
+const Card = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -19,26 +19,26 @@ const AwardCard = styled.div`
   border-radius: 8px;
 `
 
-const MedalEmoji = styled.span`
+const Medal = styled.span`
   font-size: 1.5rem;
   flex-shrink: 0;
 `
 
-const AwardContent = styled.div`
+const Content = styled.div`
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
   flex: 1;
 `
 
-const AwardTitle = styled.h3`
+const Title = styled.h3`
   font-size: 1rem;
   font-weight: 700;
   color: var(--content-standard-primary);
   margin: 0;
 `
 
-const AwardDescription = styled.p`
+const Description = styled.p`
   font-size: 0.75rem;
   font-weight: 500;
   color: var(--content-standard-primary);
@@ -73,7 +73,7 @@ export function Awards() {
     return (
       <Tile title="Awards">
         <Container>
-          {Array.from({ length: 8 }).map((_, index) => (
+          {Array.from({ length: 5 }).map((_, index) => (
             <Skeleton key={index} width="100%" height={38} borderRadius="8px" />
           ))}
         </Container>
@@ -85,20 +85,16 @@ export function Awards() {
     <Tile title="Awards">
       <Container>
         {awards?.map((award) => (
-          <AwardCard key={award.id}>
-            <MedalEmoji>
-              {getMedalEmoji(award.properties.medal?.select?.name)}
-            </MedalEmoji>
-            <AwardContent>
-              <AwardTitle>
-                {award.properties.name?.title[0]?.plain_text}
-              </AwardTitle>
-              <AwardDescription>
+          <Card key={award.id}>
+            <Medal>{getMedalEmoji(award.properties.medal?.select?.name)}</Medal>
+            <Content>
+              <Title>{award.properties.name?.title[0]?.plain_text}</Title>
+              <Description>
                 {formatDate(award.properties.date?.date.start)} /{" "}
                 {award.properties.description?.rich_text[0]?.plain_text}
-              </AwardDescription>
-            </AwardContent>
-          </AwardCard>
+              </Description>
+            </Content>
+          </Card>
         ))}
       </Container>
     </Tile>

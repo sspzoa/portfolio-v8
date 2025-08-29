@@ -10,7 +10,7 @@ const Container = styled.div`
   padding: 0.5rem;
 `
 
-const CertificateCard = styled.div`
+const Card = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -19,21 +19,21 @@ const CertificateCard = styled.div`
   border-radius: 8px;
 `
 
-const CertificateContent = styled.div`
+const Content = styled.div`
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
   flex: 1;
 `
 
-const CertificateTitle = styled.h3`
+const Title = styled.h3`
   font-size: 1rem;
   font-weight: 700;
   color: var(--content-standard-primary);
   margin: 0;
 `
 
-const CertificateDescription = styled.p`
+const Description = styled.p`
   font-size: 0.75rem;
   font-weight: 500;
   color: var(--content-standard-primary);
@@ -55,7 +55,7 @@ export function Certificates() {
     return (
       <Tile title="Certificates">
         <Container>
-          {Array.from({ length: 6 }).map((_, index) => (
+          {Array.from({ length: 5 }).map((_, index) => (
             <Skeleton key={index} width="100%" height={38} borderRadius="8px" />
           ))}
         </Container>
@@ -67,18 +67,16 @@ export function Certificates() {
     <Tile title="Certificates">
       <Container>
         {certificates?.map((certificate) => (
-          <CertificateCard key={certificate.id}>
-            <CertificateContent>
-              <CertificateTitle>
-                {certificate.properties.name?.title[0]?.plain_text}
-              </CertificateTitle>
-              <CertificateDescription>
+          <Card key={certificate.id}>
+            <Content>
+              <Title>{certificate.properties.name?.title[0]?.plain_text}</Title>
+              <Description>
                 {formatDate(certificate.properties.date?.date.start)} /{" "}
                 {certificate.properties.kind?.rich_text[0]?.plain_text} /{" "}
                 {certificate.properties.institution?.rich_text[0]?.plain_text}
-              </CertificateDescription>
-            </CertificateContent>
-          </CertificateCard>
+              </Description>
+            </Content>
+          </Card>
         ))}
       </Container>
     </Tile>

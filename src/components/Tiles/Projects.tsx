@@ -44,7 +44,7 @@ const CoverImage = styled.img`
 const RightContent = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
+  gap: 1.25rem;
   flex: 1;
 `
 
@@ -82,21 +82,19 @@ const Content = styled.div`
 const Title = styled.h3`
   font-size: 1rem;
   font-weight: 700;
-  color: var(--content-standard-primary);
   margin: 0;
 `
 
 const Description = styled.p`
   font-size: 0.75rem;
   font-weight: 500;
-  color: var(--content-standard-primary);
   margin: 0;
 `
 
 const DetailText = styled.div`
-  font-size: 0.75rem;
-  font-weight: 400;
-  color: var(--content-standard-secondary);
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.6;
   white-space: pre-line;
 `
 
@@ -186,11 +184,9 @@ export function Projects() {
                   </Description>
                 </Content>
               </TitleArea>
-              {project.properties.description?.rich_text[0]?.plain_text && (
-                <DetailText>
-                  {project.properties.description.rich_text[0].plain_text}
-                </DetailText>
-              )}
+              <DetailText>
+                {project.properties.description?.rich_text[0].plain_text}
+              </DetailText>
             </RightContent>
           </Card>
         ))}

@@ -13,7 +13,7 @@ const Container = styled.div`
 const Card = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
+  gap: 1.25rem;
   border-radius: 8px;
 `
 
@@ -53,19 +53,17 @@ const TitleArea = styled.div`
 const Title = styled.h3`
   font-size: 1rem;
   font-weight: 700;
-  color: var(--content-standard-primary);
 `
 
 const Description = styled.p`
   font-size: 0.75rem;
   font-weight: 500;
-  color: var(--content-standard-primary);
 `
 
 const DetailText = styled.div`
-  font-size: 0.75rem;
-  font-weight: 400;
-  color: var(--content-standard-secondary);
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.6;
   white-space: pre-line;
 `
 

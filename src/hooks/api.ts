@@ -12,7 +12,7 @@ import {
 import { ActivityType } from "@/types/ActivityType"
 import { AwardType } from "@/types/AwardType"
 import { CertificateType } from "@/types/CertificateType"
-import { AboutType } from "@/types/ExperienceType"
+import { ExperienceType } from "@/types/ExperienceType"
 import { ProjectType } from "@/types/ProjectType"
 import { SkillType } from "@/types/SkillType"
 
@@ -88,7 +88,7 @@ export const useExperiences = () => {
 
   const query = useQuery({
     queryKey: ["experiences"],
-    queryFn: (): Promise<{ results: AboutType[] }> =>
+    queryFn: (): Promise<{ results: ExperienceType[] }> =>
       fetcher("/api/experiences"),
   })
 

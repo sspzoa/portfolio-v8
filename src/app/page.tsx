@@ -9,6 +9,9 @@ import { Awards } from "@/components/Tiles/Awards"
 import { Certificates } from "@/components/Tiles/Certificates"
 import { Projects } from "@/components/Tiles/Projects"
 import { Contributions } from "@/components/Tiles/Contributions"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons"
+import { faEnvelope } from "@fortawesome/free-solid-svg-icons"
 
 const Container = styled.div`
   display: flex;
@@ -86,6 +89,35 @@ export default function Home() {
             Seungpyo Suh
           </span>{" "}
         </TitleText>
+        <Row
+          style={{
+            justifyContent: "center",
+          }}
+        >
+          <a
+            href="https://github.com/sspzoa"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <FontAwesomeIcon icon={faGithub} size="2xl" />
+          </a>
+
+          <a
+            href="https://linkedin.com/in/seungpyosuh"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <FontAwesomeIcon icon={faLinkedin} size="2xl" />
+          </a>
+
+          <a
+            href="mailto:me@sspzoa.io"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <FontAwesomeIcon icon={faEnvelope} size="2xl" />
+          </a>
+        </Row>
       </HeroArea>
       <TileArea>
         <AboutMe />

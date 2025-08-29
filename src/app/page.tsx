@@ -39,8 +39,9 @@ const LogoImage = styled.img`
     box-shadow: 0 0 24px #6d87a8;
   }
   @media (max-width: 768px) {
-    width: 140px;
-    height: 140px;
+    width: 120px;
+    height: 120px;
+    border-radius: 24px;
   }
 `
 
@@ -48,7 +49,7 @@ const TitleText = styled.h1`
   font-size: 2.5rem;
   font-weight: 900;
   @media (max-width: 768px) {
-    font-size: 1.75rem;
+    font-size: 1.5rem;
   }
 `
 

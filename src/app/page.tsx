@@ -23,7 +23,7 @@ const HeroArea = styled.div`
   justify-content: center;
   align-items: center;
   gap: 2rem;
-  height: 90dvh;
+  height: 80dvh;
   width: 100%;
 `
 
@@ -35,11 +35,18 @@ const LogoImage = styled.img`
   &:hover {
     box-shadow: 0 0 24px #6d87a8;
   }
+  @media (max-width: 768px) {
+    width: 150px;
+    height: 150px;
+  }
 `
 
 const TitleText = styled.h1`
   font-size: 2.5rem;
   font-weight: 900;
+  @media (max-width: 768px) {
+    font-size: 2rem;
+  }
 `
 
 const TileArea = styled.div`

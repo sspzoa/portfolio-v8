@@ -37,7 +37,12 @@ export function Experiences() {
       <Tile title="Experiences">
         <TileContainer gap="3rem">
           {Array.from({ length: 5 }).map((_, index) => (
-            <Skeleton key={index} width="100%" height={38} borderRadius="8px" />
+            <CardColumn key={index}>
+              <Skeleton width="100%" height={70} borderRadius="16px" />
+              <Skeleton width="100%" height={20} borderRadius="4px" />
+              <Skeleton width="80%" height={20} borderRadius="4px" />
+              <Skeleton width="90%" height={20} borderRadius="4px" />
+            </CardColumn>
           ))}
         </TileContainer>
       </Tile>

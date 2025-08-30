@@ -85,7 +85,30 @@ export function Projects() {
       <Tile title="Projects">
         <TileContainer gap="4.5rem">
           {Array.from({ length: 4 }).map((_, index) => (
-            <Skeleton key={index} width="100%" height={38} borderRadius="8px" />
+            <ProjectSection key={index}>
+              <CoverImageContainer>
+                <Skeleton width="100%" height="100%" borderRadius="8px" />
+              </CoverImageContainer>
+              <CardColumn style={{ width: "100%" }}>
+                <Skeleton width="100%" height={70} borderRadius="16px" />
+                <div
+                  style={{
+                    display: "flex",
+                    gap: "0.5rem",
+                    flexWrap: "wrap",
+                    margin: "0.5rem 0",
+                  }}
+                >
+                  <Skeleton width="60px" height={20} borderRadius="12px" />
+                  <Skeleton width="80px" height={20} borderRadius="12px" />
+                  <Skeleton width="70px" height={20} borderRadius="12px" />
+                </div>
+                <Skeleton width="100%" height={20} borderRadius="4px" />
+                <Skeleton width="80%" height={20} borderRadius="4px" />
+                <Skeleton width="90%" height={20} borderRadius="4px" />
+                <Skeleton width="80%" height={20} borderRadius="4px" />
+              </CardColumn>
+            </ProjectSection>
           ))}
         </TileContainer>
       </Tile>

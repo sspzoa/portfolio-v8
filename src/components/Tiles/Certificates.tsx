@@ -10,6 +10,9 @@ const Container = styled.div`
   flex-direction: column;
   gap: 1.5rem;
   padding: 0.5rem;
+  @media (max-width: 768px) {
+    padding: 0;
+  }
 `
 
 const formatDate = (dateString?: string) => {

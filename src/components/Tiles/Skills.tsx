@@ -12,6 +12,9 @@ const SkillsGrid = styled.div`
   justify-items: center;
   align-items: center;
   padding: 0.5rem;
+  @media (max-width: 768px) {
+    padding: 0;
+  }
 `
 
 export function Skills() {

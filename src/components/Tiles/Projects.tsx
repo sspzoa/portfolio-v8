@@ -18,6 +18,9 @@ const Container = styled.div`
   flex-direction: column;
   gap: 4.5rem;
   padding: 0.5rem;
+  @media (max-width: 768px) {
+    padding: 0;
+  }
 `
 
 const ProjectSection = styled.div`

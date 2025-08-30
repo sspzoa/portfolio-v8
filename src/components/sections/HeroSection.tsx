@@ -13,17 +13,16 @@ const HeroArea = styled.div`
   width: 100%;
 `
 
-const LogoImage = styled.img`
-  width: 180px;
-  height: 180px;
+const MainImage = styled.img`
+  width: 150px;
+  height: 200px;
   border-radius: 36px;
-  transition: box-shadow 0.3s ease-in-out;
-  &:hover {
-    box-shadow: 0 0 24px #6d87a8;
-  }
+  object-fit: cover;
+  object-position: top;
+  overflow: hidden;
   @media (max-width: 768px) {
     width: 120px;
-    height: 120px;
+    height: 160px;
     border-radius: 24px;
   }
 `
@@ -43,11 +42,18 @@ const Contacts = styled.div`
   width: 100%;
   justify-content: center;
 `
+const Images = styled.div`
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+`
 
 export function HeroSection() {
   return (
     <HeroArea>
-      <LogoImage src="/sspzoa_logo.svg" alt="sspzoa Logo" draggable={false} />
+      <MainImage src="/photo.jpg" alt="photo" draggable={false} />
       <TitleText>
         <span>sspzoa</span>{" "}
         <span style={{ color: "var(--content-standard-tertiary)" }}>

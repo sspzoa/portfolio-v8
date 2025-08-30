@@ -24,6 +24,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ko">
+      <head>
+        <meta name="robots" content="noimageindex" />
+      </head>
       <body className="antialiased">
         <Analytics />
         <SpeedInsights />

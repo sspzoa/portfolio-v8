@@ -14,7 +14,7 @@ export const DescriptionText = styled.p`
 
 export const DetailText = styled.div`
   font-size: 0.875rem;
-  font-weight: 500;
-  line-height: 1.6;
+  font-weight: 400;
+  line-height: 1.8;
   white-space: pre-line;
 `

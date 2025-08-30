@@ -26,6 +26,10 @@ const TileArea = styled.div`
   max-width: 1000px;
   margin-bottom: 8rem;
   padding: 0 1rem;
+  @media (max-width: 768px) {
+    margin-bottom: 4rem;
+    padding: 0;
+  }
 `
 const Row = styled.div`
   display: flex;

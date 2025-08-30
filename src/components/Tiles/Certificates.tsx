@@ -2,42 +2,14 @@ import { Tile } from "@/components/common/Tile"
 import { useCertificates } from "@/hooks/api"
 import Skeleton from "@/components/common/Skeleton"
 import styled from "@emotion/styled"
+import { Card, Content } from "@/components/common/Layout"
+import { DescriptionText, TitleText } from "@/components/common/Typo"
 
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 1.75rem;
+  gap: 1.5rem;
   padding: 0.5rem;
-`
-
-const Card = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
-  border-radius: 8px;
-`
-
-const Content = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 0.25rem;
-  flex: 1;
-`
-
-const Title = styled.h3`
-  font-size: 1rem;
-  font-weight: 700;
-  color: var(--content-standard-primary);
-  margin: 0;
-`
-
-const Description = styled.p`
-  font-size: 0.75rem;
-  font-weight: 500;
-  color: var(--content-standard-primary);
-  margin: 0;
 `
 
 const formatDate = (dateString?: string) => {
@@ -69,12 +41,14 @@ export function Certificates() {
         {certificates?.map((certificate) => (
           <Card key={certificate.id}>
             <Content>
-              <Title>{certificate.properties.name?.title[0]?.plain_text}</Title>
-              <Description>
+              <TitleText>
+                {certificate.properties.name?.title[0]?.plain_text}
+              </TitleText>
+              <DescriptionText>
                 {formatDate(certificate.properties.date?.date.start)} /{" "}
                 {certificate.properties.kind?.rich_text[0]?.plain_text} /{" "}
                 {certificate.properties.institution?.rich_text[0]?.plain_text}
-              </Description>
+              </DescriptionText>
             </Content>
           </Card>
         ))}

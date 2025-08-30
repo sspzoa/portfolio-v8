@@ -9,5 +9,6 @@ export interface ProjectType {
     description?: { rich_text: { plain_text: string }[] }
     shortDescription?: { rich_text: { plain_text: string }[] }
     isSideProject: { checkbox: boolean }
+    tags: { multi_select: { name: string }[] }
   }
 }

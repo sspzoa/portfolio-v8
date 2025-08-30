@@ -12,6 +12,7 @@ const Container = styled.div`
 const FooterText = styled.p`
   font-size: 1rem;
   font-weight: 600;
+  text-align: center;
   color: var(--content-standard-tertiary);
 `
 

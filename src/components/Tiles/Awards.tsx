@@ -2,47 +2,19 @@ import { Tile } from "@/components/common/Tile"
 import { useAwards } from "@/hooks/api"
 import Skeleton from "@/components/common/Skeleton"
 import styled from "@emotion/styled"
+import { DescriptionText, TitleText } from "@/components/common/Typo"
+import { Card, Content } from "@/components/common/Layout"
 
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 1.75rem;
+  gap: 1.5rem;
   padding: 0.5rem;
-`
-
-const Card = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
-  border-radius: 8px;
 `
 
 const Medal = styled.span`
   font-size: 1.5rem;
   flex-shrink: 0;
-`
-
-const Content = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 0.25rem;
-  flex: 1;
-`
-
-const Title = styled.h3`
-  font-size: 1rem;
-  font-weight: 700;
-  color: var(--content-standard-primary);
-  margin: 0;
-`
-
-const Description = styled.p`
-  font-size: 0.75rem;
-  font-weight: 500;
-  color: var(--content-standard-primary);
-  margin: 0;
 `
 
 const getMedalEmoji = (medalType?: string) => {
@@ -88,11 +60,13 @@ export function Awards() {
           <Card key={award.id}>
             <Medal>{getMedalEmoji(award.properties.medal?.select?.name)}</Medal>
             <Content>
-              <Title>{award.properties.name?.title[0]?.plain_text}</Title>
-              <Description>
+              <TitleText>
+                {award.properties.name?.title[0]?.plain_text}
+              </TitleText>
+              <DescriptionText>
                 {formatDate(award.properties.date?.date.start)} /{" "}
                 {award.properties.description?.rich_text[0]?.plain_text}
-              </Description>
+              </DescriptionText>
             </Content>
           </Card>
         ))}

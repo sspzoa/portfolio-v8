@@ -2,19 +2,13 @@ import { Tile } from "@/components/common/Tile"
 import { useAboutMe } from "@/hooks/api"
 import Skeleton from "@/components/common/Skeleton"
 import styled from "@emotion/styled"
+import { DetailText } from "@/components/common/Typo"
 
 const Container = styled.div`
   display: flex;
   flex-direction: column;
   gap: 2.75rem;
   padding: 0.5rem;
-`
-
-const DetailText = styled.div`
-  font-size: 0.875rem;
-  font-weight: 500;
-  line-height: 1.6;
-  white-space: pre-line;
 `
 
 export function AboutMe() {

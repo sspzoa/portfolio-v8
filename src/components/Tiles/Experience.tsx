@@ -2,69 +2,19 @@ import { Tile } from "@/components/common/Tile"
 import { useExperiences } from "@/hooks/api"
 import Skeleton from "@/components/common/Skeleton"
 import styled from "@emotion/styled"
+import {
+  DescriptionText,
+  DetailText,
+  TitleText,
+} from "@/components/common/Typo"
+import { Card, CardColumn, Content } from "@/components/common/Layout"
+import { Icon, IconImage } from "@/components/common/Object"
 
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 2.75rem;
+  gap: 3rem;
   padding: 0.5rem;
-`
-
-const Card = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 1.25rem;
-  border-radius: 8px;
-`
-
-const Logo = styled.div`
-  width: 2rem;
-  height: 2rem;
-  flex-shrink: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 4px;
-  overflow: hidden;
-`
-
-const LogoImage = styled.img`
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-`
-
-const Content = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 0.25rem;
-  flex: 1;
-`
-
-const TitleArea = styled.div`
-  display: flex;
-  flex-direction: row;
-  gap: 1rem;
-  align-items: center;
-  justify-content: center;
-  flex: 1;
-`
-
-const Title = styled.h3`
-  font-size: 1rem;
-  font-weight: 700;
-`
-
-const Description = styled.p`
-  font-size: 0.75rem;
-  font-weight: 500;
-`
-
-const DetailText = styled.div`
-  font-size: 0.875rem;
-  font-weight: 500;
-  line-height: 1.6;
-  white-space: pre-line;
 `
 
 const formatDate = (dateString?: string) => {
@@ -101,11 +51,12 @@ export function Experience() {
     <Tile title="Experience">
       <Container>
         {experiences?.map((experience) => (
-          <Card key={experience.id}>
-            <TitleArea>
-              <Logo>
+          <CardColumn key={experience.id}>
+            <Card hasBackground={true}>
+              <Icon>
                 {experience.properties.logo?.files?.[0]?.file?.url ? (
-                  <LogoImage
+                  <IconImage
+                    draggable={false}
                     src={experience.properties.logo.files[0].file.url}
                     alt={
                       experience.properties.organization?.rich_text[0]
@@ -115,24 +66,24 @@ export function Experience() {
                 ) : (
                   <span style={{ fontSize: "1.5rem" }}>💼</span>
                 )}
-              </Logo>
+              </Icon>
               <Content>
-                <Title>
+                <TitleText>
                   {experience.properties.organization?.rich_text[0]?.plain_text}{" "}
                   - {experience.properties.name?.title[0]?.plain_text}
-                </Title>
-                <Description>
+                </TitleText>
+                <DescriptionText>
                   {formatDateRange(
                     experience.properties.date?.date?.start,
                     experience.properties.date?.date?.end
                   )}
-                </Description>
+                </DescriptionText>
               </Content>
-            </TitleArea>
+            </Card>
             <DetailText>
               {experience.properties.description?.rich_text[0].plain_text}
             </DetailText>
-          </Card>
+          </CardColumn>
         ))}
       </Container>
     </Tile>

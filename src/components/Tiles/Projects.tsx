@@ -3,21 +3,29 @@ import { useProjects } from "@/hooks/api"
 import Skeleton from "@/components/common/Skeleton"
 import styled from "@emotion/styled"
 import { atom, useAtom } from "jotai"
+import {
+  DescriptionText,
+  DetailText,
+  TitleText,
+} from "@/components/common/Typo"
+import { Card, CardColumn, Content } from "@/components/common/Layout"
+import { Icon, IconImage } from "@/components/common/Object"
 
 const showSideProjectsAtom = atom(false)
 
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 4.75rem;
+  gap: 4.5rem;
   padding: 0.5rem;
 `
 
-const Card = styled.div`
+const ProjectSection = styled.div`
   display: flex;
   flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
   gap: 1rem;
-  border-radius: 8px;
   @media (max-width: 768px) {
     flex-direction: column;
   }
@@ -33,6 +41,7 @@ const CoverImageContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  border: 1px solid var(--line-outline);
 `
 
 const CoverImage = styled.img`
@@ -41,69 +50,25 @@ const CoverImage = styled.img`
   object-fit: cover;
 `
 
-const RightContent = styled.div`
+const Tags = styled.div`
   display: flex;
-  flex-direction: column;
-  gap: 1.25rem;
-  flex: 1;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0.5rem 0;
 `
 
-const TitleArea = styled.div`
-  display: flex;
-  flex-direction: row;
-  gap: 0.75rem;
-  align-items: center;
-`
-
-const Icon = styled.div`
-  width: 2rem;
-  height: 2rem;
-  flex-shrink: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 4px;
-  overflow: hidden;
-`
-
-const IconImage = styled.img`
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-`
-
-const Content = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 0.25rem;
-  flex: 1;
-`
-
-const Title = styled.h3`
-  font-size: 1rem;
-  font-weight: 700;
-  margin: 0;
-`
-
-const Description = styled.p`
+const Tag = styled.span`
+  padding: 0.25rem 0.75rem;
+  border-radius: 12px;
   font-size: 0.75rem;
   font-weight: 500;
-  margin: 0;
-`
-
-const DetailText = styled.div`
-  font-size: 0.875rem;
-  font-weight: 500;
-  line-height: 1.6;
-  white-space: pre-line;
+  border: 1px solid var(--line-outline);
 `
 
 const ShowMoreButton = styled.button`
   background: none;
   border: none;
   color: var(--content-standard-secondary);
-  font-size: 0.75rem;
-  font-weight: 500;
   cursor: pointer;
   padding: 0.5rem 0;
   text-align: center;
@@ -143,10 +108,11 @@ export function Projects() {
     <Tile title="Projects">
       <Container>
         {displayedProjects.map((project) => (
-          <Card key={project.id}>
+          <ProjectSection key={project.id}>
             <CoverImageContainer>
               {project.cover?.file?.url ? (
                 <CoverImage
+                  draggable={false}
                   src={project.cover.file.url}
                   alt={project.properties.name?.title[0]?.plain_text}
                 />
@@ -154,11 +120,12 @@ export function Projects() {
                 <span style={{ fontSize: "2rem" }}>📱</span>
               )}
             </CoverImageContainer>
-            <RightContent>
-              <TitleArea>
+            <CardColumn>
+              <Card hasBackground={true}>
                 <Icon>
                   {project.icon?.file?.url ? (
                     <IconImage
+                      draggable={false}
                       src={project.icon.file.url}
                       alt={project.properties.name?.title[0]?.plain_text}
                     />
@@ -167,8 +134,10 @@ export function Projects() {
                   )}
                 </Icon>
                 <Content>
-                  <Title>{project.properties.name?.title[0]?.plain_text}</Title>
-                  <Description>
+                  <TitleText>
+                    {project.properties.name?.title[0]?.plain_text}
+                  </TitleText>
+                  <DescriptionText>
                     {project.properties.teamSize.number}인 프로젝트
                     {project.properties.shortDescription?.rich_text[0]
                       ?.plain_text && (
@@ -181,22 +150,29 @@ export function Projects() {
                         }
                       </>
                     )}
-                  </Description>
+                  </DescriptionText>
                 </Content>
-              </TitleArea>
+              </Card>
+              <Tags>
+                {project.properties.tags?.multi_select?.map((tag, index) => (
+                  <Tag key={index}>{tag.name}</Tag>
+                ))}
+              </Tags>
               <DetailText>
                 {project.properties.description?.rich_text[0].plain_text}
               </DetailText>
-            </RightContent>
-          </Card>
+            </CardColumn>
+          </ProjectSection>
         ))}
         {sideProjects.length > 0 && (
           <ShowMoreButton
             onClick={() => setShowSideProjects(!showSideProjects)}
           >
-            {showSideProjects
-              ? `사이드 프로젝트 숨기기`
-              : `사이드 프로젝트 ${sideProjects.length}개 더보기`}
+            <DetailText>
+              {showSideProjects
+                ? `사이드 프로젝트 숨기기`
+                : `사이드 프로젝트 ${sideProjects.length}개 더보기`}
+            </DetailText>
           </ShowMoreButton>
         )}
       </Container>

@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query"
 import { useAtom } from "jotai"
 import { useEffect } from "react"
 import {
+  aboutmeAtom,
   activitiesAtom,
   awardsAtom,
   certificatesAtom,
@@ -9,6 +10,7 @@ import {
   projectsAtom,
   skillsAtom,
 } from "@/store/atoms"
+import { AboutMeType } from "@/types/AboutMeType"
 import { ActivityType } from "@/types/ActivityType"
 import { AwardType } from "@/types/AwardType"
 import { CertificateType } from "@/types/CertificateType"
@@ -19,6 +21,26 @@ import { SkillType } from "@/types/SkillType"
 const fetcher = async (url: string) => {
   const response = await fetch(url)
   return response.json()
+}
+
+export const useAboutMe = () => {
+  const [aboutme, setAboutme] = useAtom(aboutmeAtom)
+
+  const query = useQuery({
+    queryKey: ["aboutme"],
+    queryFn: (): Promise<{ results: AboutMeType[] }> => fetcher("/api/aboutme"),
+  })
+
+  useEffect(() => {
+    if (query.data) {
+      setAboutme(query.data.results[0])
+    }
+  }, [query.data, setAboutme])
+
+  return {
+    ...query,
+    data: aboutme,
+  }
 }
 
 export const useActivities = () => {

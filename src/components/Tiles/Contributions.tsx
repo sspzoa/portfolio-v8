@@ -1,5 +1,4 @@
 import { Tile } from "@/components/common/Tile"
-import Link from "next/link"
 import GitHubCalendar from "react-github-calendar"
 import styled from "@emotion/styled"
 

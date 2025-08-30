@@ -13,13 +13,13 @@ const HeroArea = styled.div`
   width: 100%;
 `
 
-const MainImage = styled.img`
+const MainImage = styled.div`
   width: 150px;
   height: 200px;
   border-radius: 36px;
-  object-fit: cover;
-  object-position: top;
-  overflow: hidden;
+  background-image: url("/photo.jpg");
+  background-size: 110%;
+  background-position: top -1px center;
   @media (max-width: 768px) {
     width: 120px;
     height: 160px;
@@ -53,7 +53,7 @@ const Images = styled.div`
 export function HeroSection() {
   return (
     <HeroArea>
-      <MainImage src="/photo.jpg" alt="photo" draggable={false} />
+      <MainImage />
       <TitleText>
         <span>sspzoa</span>{" "}
         <span style={{ color: "var(--content-standard-tertiary)" }}>

@@ -1,19 +1,8 @@
 import { Tile } from "@/components/common/Tile"
 import { useCertificates } from "@/hooks/api"
 import Skeleton from "@/components/common/Skeleton"
-import styled from "@emotion/styled"
-import { Card, Content } from "@/components/common/Layout"
+import { Card, Content, TileContainer } from "@/components/common/Layout"
 import { DescriptionText, TitleText } from "@/components/common/Typo"
-
-const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-  padding: 0.5rem;
-  @media (max-width: 768px) {
-    padding: 0;
-  }
-`
 
 const formatDate = (dateString?: string) => {
   if (!dateString) return ""
@@ -29,18 +18,18 @@ export function Certificates() {
   if (isLoading)
     return (
       <Tile title="Certificates">
-        <Container>
+        <TileContainer gap="1.5rem">
           {Array.from({ length: 5 }).map((_, index) => (
             <Skeleton key={index} width="100%" height={38} borderRadius="8px" />
           ))}
-        </Container>
+        </TileContainer>
       </Tile>
     )
   if (error) return <Tile title="Certificates">Error loading certificates</Tile>
 
   return (
     <Tile title="Certificates">
-      <Container>
+      <TileContainer gap="1.5rem">
         {certificates?.map((certificate) => (
           <Card key={certificate.id}>
             <Content>
@@ -55,7 +44,7 @@ export function Certificates() {
             </Content>
           </Card>
         ))}
-      </Container>
+      </TileContainer>
     </Tile>
   )
 }

@@ -3,17 +3,7 @@ import { useAwards } from "@/hooks/api"
 import Skeleton from "@/components/common/Skeleton"
 import styled from "@emotion/styled"
 import { DescriptionText, TitleText } from "@/components/common/Typo"
-import { Card, Content } from "@/components/common/Layout"
-
-const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-  padding: 0.5rem;
-  @media (max-width: 768px) {
-    padding: 0;
-  }
-`
+import { Card, Content, TileContainer } from "@/components/common/Layout"
 
 const Medal = styled.span`
   font-size: 1.5rem;
@@ -47,18 +37,18 @@ export function Awards() {
   if (isLoading)
     return (
       <Tile title="Awards">
-        <Container>
+        <TileContainer gap="1.5rem">
           {Array.from({ length: 5 }).map((_, index) => (
             <Skeleton key={index} width="100%" height={38} borderRadius="8px" />
           ))}
-        </Container>
+        </TileContainer>
       </Tile>
     )
   if (error) return <Tile title="Awards">Error loading awards</Tile>
 
   return (
     <Tile title="Awards">
-      <Container>
+      <TileContainer gap="1.5rem">
         {awards?.map((award) => (
           <Card key={award.id}>
             <Medal>{getMedalEmoji(award.properties.medal?.select?.name)}</Medal>
@@ -73,7 +63,7 @@ export function Awards() {
             </Content>
           </Card>
         ))}
-      </Container>
+      </TileContainer>
     </Tile>
   )
 }

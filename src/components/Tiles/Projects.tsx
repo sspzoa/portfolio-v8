@@ -8,20 +8,15 @@ import {
   DetailText,
   TitleText,
 } from "@/components/common/Typo"
-import { Card, CardColumn, Content } from "@/components/common/Layout"
+import {
+  Card,
+  CardColumn,
+  Content,
+  TileContainer,
+} from "@/components/common/Layout"
 import { Icon, IconImage } from "@/components/common/Object"
 
 const showSideProjectsAtom = atom(false)
-
-const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 4.5rem;
-  padding: 0.5rem;
-  @media (max-width: 768px) {
-    padding: 0;
-  }
-`
 
 const ProjectSection = styled.div`
   display: flex;
@@ -88,11 +83,11 @@ export function Projects() {
   if (isLoading)
     return (
       <Tile title="Projects">
-        <Container>
+        <TileContainer gap="4.5rem">
           {Array.from({ length: 4 }).map((_, index) => (
             <Skeleton key={index} width="100%" height={38} borderRadius="8px" />
           ))}
-        </Container>
+        </TileContainer>
       </Tile>
     )
   if (error) return <Tile title="Projects">Error loading projects</Tile>
@@ -109,7 +104,7 @@ export function Projects() {
 
   return (
     <Tile title="Projects">
-      <Container>
+      <TileContainer gap="4.5rem">
         {displayedProjects.map((project) => (
           <ProjectSection key={project.id}>
             <CoverImageContainer>
@@ -178,7 +173,7 @@ export function Projects() {
             </DetailText>
           </ShowMoreButton>
         )}
-      </Container>
+      </TileContainer>
     </Tile>
   )
 }

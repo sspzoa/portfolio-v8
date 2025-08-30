@@ -1,24 +1,18 @@
 import { Tile } from "@/components/common/Tile"
 import { useExperiences } from "@/hooks/api"
 import Skeleton from "@/components/common/Skeleton"
-import styled from "@emotion/styled"
 import {
   DescriptionText,
   DetailText,
   TitleText,
 } from "@/components/common/Typo"
-import { Card, CardColumn, Content } from "@/components/common/Layout"
+import {
+  Card,
+  CardColumn,
+  Content,
+  TileContainer,
+} from "@/components/common/Layout"
 import { Icon, IconImage } from "@/components/common/Object"
-
-const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 3rem;
-  padding: 0.5rem;
-  @media (max-width: 768px) {
-    padding: 0;
-  }
-`
 
 const formatDate = (dateString?: string) => {
   if (!dateString) return ""
@@ -35,24 +29,24 @@ const formatDateRange = (startDate?: string, endDate?: string) => {
   return `${start} - ${end}`
 }
 
-export function Experience() {
+export function Experiences() {
   const { data: experiences, isLoading, error } = useExperiences()
 
   if (isLoading)
     return (
-      <Tile title="Experience">
-        <Container>
+      <Tile title="Experiences">
+        <TileContainer gap="3rem">
           {Array.from({ length: 5 }).map((_, index) => (
             <Skeleton key={index} width="100%" height={38} borderRadius="8px" />
           ))}
-        </Container>
+        </TileContainer>
       </Tile>
     )
-  if (error) return <Tile title="Experience">Error loading experiences</Tile>
+  if (error) return <Tile title="Experiences">Error loading experiences</Tile>
 
   return (
-    <Tile title="Experience">
-      <Container>
+    <Tile title="Experiences">
+      <TileContainer gap="3rem">
         {experiences?.map((experience) => (
           <CardColumn key={experience.id}>
             <Card hasBackground={true}>
@@ -88,7 +82,7 @@ export function Experience() {
             </DetailText>
           </CardColumn>
         ))}
-      </Container>
+      </TileContainer>
     </Tile>
   )
 }

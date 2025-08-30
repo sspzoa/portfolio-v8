@@ -3,6 +3,7 @@ import { useSkills } from "@/hooks/api"
 import Skeleton from "@/components/common/Skeleton"
 import Image from "next/image"
 import styled from "@emotion/styled"
+import { TileContainer } from "@/components/common/Layout"
 
 const SkillsGrid = styled.div`
   display: grid;
@@ -11,10 +12,6 @@ const SkillsGrid = styled.div`
   gap: 1rem;
   justify-items: center;
   align-items: center;
-  padding: 0.5rem;
-  @media (max-width: 768px) {
-    padding: 0;
-  }
 `
 
 export function Skills() {
@@ -34,22 +31,24 @@ export function Skills() {
 
   return (
     <Tile title="Skills">
-      <SkillsGrid>
-        {skills?.map((skill) => (
-          <div key={skill.id}>
-            {skill.properties.icon?.files[0]?.file?.url && (
-              <Image
-                src={skill.properties.icon.files[0].file.url}
-                title={skill.properties.name?.title[0]?.plain_text}
-                alt={skill.properties.name?.title[0]?.plain_text || ""}
-                width={32}
-                height={32}
-                draggable={false}
-              />
-            )}
-          </div>
-        ))}
-      </SkillsGrid>
+      <TileContainer gap="1rem">
+        <SkillsGrid>
+          {skills?.map((skill) => (
+            <div key={skill.id}>
+              {skill.properties.icon?.files[0]?.file?.url && (
+                <Image
+                  src={skill.properties.icon.files[0].file.url}
+                  title={skill.properties.name?.title[0]?.plain_text}
+                  alt={skill.properties.name?.title[0]?.plain_text || ""}
+                  width={32}
+                  height={32}
+                  draggable={false}
+                />
+              )}
+            </div>
+          ))}
+        </SkillsGrid>
+      </TileContainer>
     </Tile>
   )
 }

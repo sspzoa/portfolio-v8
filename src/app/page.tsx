@@ -4,7 +4,7 @@ import styled from "@emotion/styled"
 import { Footer } from "@/components/Footer"
 import { AboutMe } from "@/components/Tiles/AboutMe"
 import { Skills } from "@/components/Tiles/Skills"
-import { Experience } from "@/components/Tiles/Experience"
+import { Experiences } from "@/components/Tiles/Experiences"
 import { Awards } from "@/components/Tiles/Awards"
 import { Certificates } from "@/components/Tiles/Certificates"
 import { Projects } from "@/components/Tiles/Projects"
@@ -24,10 +24,10 @@ const TileArea = styled.div`
   gap: 1rem;
   width: 100%;
   max-width: 1000px;
-  margin-bottom: 8rem;
   padding: 0 1rem;
+  margin-bottom: 8rem;
   @media (max-width: 768px) {
-    margin-bottom: 4rem;
+    margin-bottom: 1rem;
     padding: 0;
   }
 `
@@ -56,7 +56,7 @@ export default function Home() {
         <AboutMe />
         <Row>
           <Column>
-            <Experience />
+            <Experiences />
           </Column>
           <Column>
             <Skills />

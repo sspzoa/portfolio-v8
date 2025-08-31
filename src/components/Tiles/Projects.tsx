@@ -89,7 +89,7 @@ export function Projects() {
               <CoverImageContainer>
                 <Skeleton width="100%" height="100%" borderRadius="8px" />
               </CoverImageContainer>
-              <CardColumn style={{ width: "100%" }}>
+              <CardColumn>
                 <Skeleton width="100%" height={70} borderRadius="16px" />
                 <div
                   style={{

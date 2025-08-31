@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   title: "Seungpyo Suh · 서승표",
   description: "I'm Seungpyo Suh, a software engineer.",
   openGraph: {
-    images: [{ url: "https://sspzoa.io/images/og-image.png" }],
+    images: [{ url: "https://sspzoa.io/og-image.png" }],
   },
 }
 

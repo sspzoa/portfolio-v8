@@ -29,7 +29,7 @@ const parseBoldText = (text: string | undefined) => {
     if (part.startsWith("**") && part.endsWith("**")) {
       const boldText = part.slice(2, -2)
       return (
-        <strong key={index} style={{ fontWeight: 900 }}>
+        <strong key={index} style={{ fontWeight: 700 }}>
           {boldText}
         </strong>
       )

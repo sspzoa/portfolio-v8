@@ -9,7 +9,7 @@ const HeroArea = styled.div`
   justify-content: center;
   align-items: center;
   gap: 2rem;
-  height: 80dvh;
+  height: 30rem;
   width: 100%;
 `
 

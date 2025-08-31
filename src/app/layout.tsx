@@ -6,7 +6,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next"
 import { Providers } from "@/providers/providers"
 
 export const metadata: Metadata = {
-  title: "sspzoa.io",
+  title: "Seungpyo Suh · 서승표",
   description: "I'm Seungpyo Suh, a software engineer.",
   openGraph: {
     images: [{ url: "https://sspzoa.io/images/og-image.png" }],

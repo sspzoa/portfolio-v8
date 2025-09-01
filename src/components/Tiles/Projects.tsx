@@ -18,6 +18,22 @@ import { Icon, IconImage } from "@/components/common/Object"
 
 const showSideProjectsAtom = atom(false)
 
+const formatDate = (dateString?: string) => {
+  if (!dateString) return ""
+  const date = new Date(dateString)
+  const year = date.getFullYear()
+  const month = String(date.getMonth() + 1).padStart(2, "0")
+  return `${year}.${month}`
+}
+
+const formatDateRange = (startDate?: string, endDate?: string) => {
+  const start = formatDate(startDate)
+  if (!endDate) return `${start}`
+  const end = formatDate(endDate)
+  if (start == end) return `${start}`
+  return `${start} - ${end}`
+}
+
 const ProjectSection = styled.div`
   display: flex;
   flex-direction: row;
@@ -156,7 +172,12 @@ export function Projects() {
                 </Icon>
                 <Content>
                   <TitleText>
-                    {project.properties.name?.title[0]?.plain_text}
+                    {project.properties.name?.title[0]?.plain_text} (
+                    {formatDateRange(
+                      project.properties.workPeriod?.date?.start,
+                      project.properties.workPeriod?.date?.end
+                    )}
+                    )
                   </TitleText>
                   <DescriptionText>
                     {project.properties.teamSize.number}인 프로젝트

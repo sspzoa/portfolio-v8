@@ -10,5 +10,6 @@ export interface ProjectType {
     shortDescription?: { rich_text: { plain_text: string }[] }
     isSideProject: { checkbox: boolean }
     tags: { multi_select: { name: string }[] }
+    workPeriod?: { date: { start: string; end?: string } }
   }
 }

@@ -54,12 +54,12 @@ export default function Home() {
       <HeroSection />
       <TileArea>
         <AboutMe />
+        <Skills />
         <Row>
           <Column>
             <Experiences />
           </Column>
           <Column>
-            <Skills />
             <Awards />
             <Certificates />
           </Column>

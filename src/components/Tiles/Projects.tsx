@@ -12,6 +12,8 @@ import {
   Card,
   CardColumn,
   Content,
+  Tag,
+  Tags,
   TileContainer,
 } from "@/components/common/Layout"
 import { Icon, IconImage } from "@/components/common/Object"
@@ -62,21 +64,6 @@ const CoverImage = styled.img`
   width: 100%;
   height: 100%;
   object-fit: cover;
-`
-
-const Tags = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  margin: 0.5rem 0;
-`
-
-const Tag = styled.span`
-  padding: 0.25rem 0.75rem;
-  border-radius: 12px;
-  font-size: 0.75rem;
-  font-weight: 500;
-  border: 1px solid var(--line-outline);
 `
 
 const ShowMoreButton = styled.button`

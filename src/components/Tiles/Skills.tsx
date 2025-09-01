@@ -16,13 +16,18 @@ const Categories = styled.div`
   align-items: flex-start;
 `
 
-const CategorySection = styled.div``
+const CategorySection = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 0.75rem;
+`
 
 const CategoryTitle = styled.h3`
   font-size: 0.75rem;
   font-weight: 600;
-  color: var(--content-standard-tertiary);
-  margin-bottom: 0.75rem;
+  color: var(--content-standard-primary);
   letter-spacing: 0.05em;
 `
 
@@ -32,9 +37,25 @@ export function Skills() {
   if (isLoading)
     return (
       <Tile title="Skills">
-        {Array.from({ length: 12 }).map((_, index) => (
-          <Skeleton key={index} width={37} height={37} borderRadius="999px" />
-        ))}
+        <TileContainer>
+          <Categories>
+            {Array.from({ length: 5 }).map((_, categoryIndex) => (
+              <CategorySection key={categoryIndex}>
+                <Skeleton width={150} height={14.5} borderRadius={4} />
+                <Tags>
+                  {Array.from({ length: 4 }).map((_, tagIndex) => (
+                    <Skeleton
+                      key={tagIndex}
+                      width={90}
+                      height={26}
+                      borderRadius={999}
+                    />
+                  ))}
+                </Tags>
+              </CategorySection>
+            ))}
+          </Categories>
+        </TileContainer>
       </Tile>
     )
   if (error) return <Tile title="Skills">Error loading skills</Tile>

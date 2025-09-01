@@ -21,13 +21,11 @@ const StyledDetailText = styled.div`
 `
 
 const parseLinks = (text: string) => {
-  // URL regex pattern to match http/https URLs
   const urlRegex = /(https?:\/\/[^\s]+)/g
   const parts = text.split(urlRegex)
 
   return parts.map((part, index) => {
     if (part.match(urlRegex)) {
-      // Extract domain from URL
       const url = new URL(part)
       const domain = url.hostname.replace(/^www\./, "") // Remove www. if present
 

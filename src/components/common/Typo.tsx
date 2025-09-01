@@ -20,6 +20,37 @@ const StyledDetailText = styled.div`
   white-space: pre-line;
 `
 
+const parseLinks = (text: string) => {
+  // URL regex pattern to match http/https URLs
+  const urlRegex = /(https?:\/\/[^\s]+)/g
+  const parts = text.split(urlRegex)
+
+  return parts.map((part, index) => {
+    if (part.match(urlRegex)) {
+      // Extract domain from URL
+      const url = new URL(part)
+      const domain = url.hostname.replace(/^www\./, "") // Remove www. if present
+
+      return (
+        <a
+          key={index}
+          href={part}
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{
+            color: "#0066cc",
+            fontWeight: 700,
+            textDecoration: "underline",
+          }}
+        >
+          {domain}
+        </a>
+      )
+    }
+    return part
+  })
+}
+
 const parseBoldText = (text: string | undefined) => {
   if (!text) return ""
 
@@ -30,11 +61,11 @@ const parseBoldText = (text: string | undefined) => {
       const boldText = part.slice(2, -2)
       return (
         <strong key={index} style={{ fontWeight: 700 }}>
-          {boldText}
+          {parseLinks(boldText)}
         </strong>
       )
     }
-    return part
+    return parseLinks(part)
   })
 }
 

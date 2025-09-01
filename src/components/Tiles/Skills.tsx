@@ -11,7 +11,7 @@ const Categories = styled.div`
   flex-direction: row;
   flex-wrap: wrap;
   width: 100%;
-  gap: 4rem;
+  gap: 3rem;
   justify-items: flex-start;
   align-items: flex-start;
 `

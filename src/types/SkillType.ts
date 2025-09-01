@@ -3,5 +3,6 @@ export interface SkillType {
   properties: {
     name?: { title: { plain_text: string }[] }
     icon?: { files: Array<{ file: { url: string } }> }
+    category?: { select: { name: string } }
   }
 }

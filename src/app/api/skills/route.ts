@@ -17,6 +17,10 @@ export async function GET() {
       body: JSON.stringify({
         sorts: [
           {
+            property: "category",
+            direction: "ascending",
+          },
+          {
             property: "name",
             direction: "ascending",
           },

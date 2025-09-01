@@ -27,7 +27,7 @@ const parseLinks = (text: string) => {
   return parts.map((part, index) => {
     if (part.match(urlRegex)) {
       const url = new URL(part)
-      const domain = url.hostname.replace(/^www\./, "") // Remove www. if present
+      const domain = url.hostname.replace(/^www\./, "")
 
       return (
         <a

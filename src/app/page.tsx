@@ -18,6 +18,18 @@ const Container = styled.div`
   align-items: center;
 `
 
+const Content = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 8rem;
+  @media (max-width: 768px) {
+    gap: 1rem;
+  }
+`
+
 const TileArea = styled.div`
   display: flex;
   flex-direction: column;
@@ -25,11 +37,6 @@ const TileArea = styled.div`
   width: 100%;
   max-width: 1000px;
   padding: 0 1rem;
-  margin-bottom: 8rem;
-  @media (max-width: 768px) {
-    margin-bottom: 1rem;
-    padding: 0;
-  }
 `
 const Row = styled.div`
   display: flex;
@@ -52,24 +59,26 @@ export default function Home() {
   return (
     <Container>
       <HeroSection />
-      <TileArea>
-        <AboutMe />
-        <Skills />
-        <Row>
-          <Column>
-            <Experiences />
-          </Column>
-          <Column>
-            <Awards />
-            <Certificates />
-          </Column>
-        </Row>
-      </TileArea>
-      <TileArea>
-        <Contributions />
-        <Projects />
-      </TileArea>
-      <Footer />
+      <Content>
+        <TileArea>
+          <AboutMe />
+          <Skills />
+          <Row>
+            <Column>
+              <Experiences />
+            </Column>
+            <Column>
+              <Awards />
+              <Certificates />
+            </Column>
+          </Row>
+        </TileArea>
+        <TileArea>
+          <Contributions />
+          <Projects />
+        </TileArea>
+        <Footer />
+      </Content>
     </Container>
   )
 }

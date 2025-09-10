@@ -12,7 +12,7 @@ const TileTitle = styled.h2`
   color: var(--content-standard-tertiary);
   margin-bottom: 1.5rem;
   @media (max-width: 768px) {
-    font-size: 0.75rem;
+    font-size: 0.875rem;
   }
 `
 

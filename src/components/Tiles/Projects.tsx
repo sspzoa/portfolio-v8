@@ -184,7 +184,9 @@ export function Projects() {
               </Card>
               <Tags>
                 {project.properties.tags?.multi_select?.map((tag, index) => (
-                  <Tag key={index}>{tag.name}</Tag>
+                  <Tag key={index}>
+                    <DescriptionText>{tag.name}</DescriptionText>
+                  </Tag>
                 ))}
               </Tags>
               <DetailText>

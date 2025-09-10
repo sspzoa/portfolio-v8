@@ -14,9 +14,6 @@ export const DescriptionText = styled.p`
   font-size: 0.75rem;
   font-weight: 500;
   margin: 0;
-  @media (max-width: 768px) {
-    font-size: 0.5rem;
-  }
 `
 
 const StyledDetailText = styled.div`

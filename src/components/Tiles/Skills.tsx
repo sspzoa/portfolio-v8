@@ -5,6 +5,7 @@ import Image from "next/image"
 import styled from "@emotion/styled"
 import { Tag, Tags, TileContainer } from "@/components/common/Layout"
 import { SkillType } from "@/types/SkillType"
+import { DescriptionText } from "@/components/common/Typo"
 
 const Categories = styled.div`
   display: flex;
@@ -22,13 +23,6 @@ const CategorySection = styled.div`
   justify-content: flex-start;
   align-items: flex-start;
   gap: 0.75rem;
-`
-
-const CategoryTitle = styled.h3`
-  font-size: 0.75rem;
-  font-weight: 600;
-  color: var(--content-standard-primary);
-  letter-spacing: 0.05em;
 `
 
 export function Skills() {
@@ -87,7 +81,7 @@ export function Skills() {
         <Categories>
           {sortedCategories.map((category) => (
             <CategorySection key={category}>
-              <CategoryTitle>{category}</CategoryTitle>
+              <DescriptionText>{category}</DescriptionText>
               <Tags>
                 {groupedSkills[category].map((skill) => (
                   <Tag key={skill.id}>
@@ -99,7 +93,9 @@ export function Skills() {
                       height={16}
                       draggable={false}
                     />
-                    {skill.properties.name?.title[0].plain_text}
+                    <DescriptionText>
+                      {skill.properties.name?.title[0].plain_text}
+                    </DescriptionText>
                   </Tag>
                 ))}
               </Tags>

@@ -1,6 +1,10 @@
 import styled from "@emotion/styled"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons"
+import {
+  faDiscord,
+  faGithub,
+  faLinkedin,
+} from "@fortawesome/free-brands-svg-icons"
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons"
 
 const HeroArea = styled.div`
@@ -60,6 +64,14 @@ export function HeroSection() {
           rel="noopener noreferrer"
         >
           <FontAwesomeIcon icon={faLinkedin} size="2xl" />
+        </a>
+
+        <a
+          href="https://www.discord.com/users/416804424275722240"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <FontAwesomeIcon icon={faDiscord} size="2xl" />
         </a>
 
         <a href="mailto:me@sspzoa.io" target="_blank" rel="noopener noreferrer">

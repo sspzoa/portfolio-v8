@@ -13,7 +13,7 @@ const Medal = styled.span`
 const getMedalEmoji = (medalType?: string) => {
   switch (medalType) {
     case "Gold":
-      return "🥇"
+      return "🏆"
     case "Silver":
       return "🥈"
     case "Bronze":

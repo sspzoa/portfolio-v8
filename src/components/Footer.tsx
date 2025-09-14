@@ -2,11 +2,10 @@ import styled from "@emotion/styled"
 
 const Container = styled.div`
   width: 100%;
-  padding: 2rem;
+  padding: 4rem 0;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: var(--backgroud-standard-primary);
 `
 
 const FooterText = styled.p`

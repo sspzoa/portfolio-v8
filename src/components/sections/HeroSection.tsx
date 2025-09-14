@@ -16,7 +16,7 @@ const HeroArea = styled.div`
 const MainImage = styled.div`
   width: 150px;
   height: 200px;
-  border-radius: 36px;
+  border-radius: 20px;
   background-image: url("/photo.jpg");
   background-size: 110%;
   background-position: top -1px center;
@@ -33,13 +33,6 @@ const Contacts = styled.div`
   gap: 1rem;
   width: 100%;
   justify-content: center;
-`
-const Images = styled.div`
-  display: flex;
-  flex-direction: row;
-  gap: 1rem;
-  justify-content: center;
-  align-items: center;
 `
 
 export function HeroSection() {

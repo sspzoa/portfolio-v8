@@ -25,7 +25,7 @@ const Content = styled.div`
   justify-content: center;
   align-items: center;
   gap: 8rem;
-  @media (max-width: 1024px) {
+  @media (max-width: 768px) {
     gap: 1rem;
   }
 `
@@ -35,7 +35,7 @@ const TileArea = styled.div`
   flex-direction: column;
   gap: 1rem;
   width: 100%;
-  max-width: 1000px;
+  max-width: 1024px;
   padding: 0 1rem;
 `
 const Row = styled.div`
@@ -43,7 +43,7 @@ const Row = styled.div`
   flex-direction: row;
   gap: 1rem;
   width: 100%;
-  @media (max-width: 1024px) {
+  @media (max-width: 768px) {
     flex-direction: column;
   }
 `

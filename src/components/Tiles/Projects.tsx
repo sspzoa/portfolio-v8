@@ -42,7 +42,7 @@ const ProjectSection = styled.div`
   justify-content: flex-start;
   align-items: flex-start;
   gap: 1rem;
-  @media (max-width: 1024px) {
+  @media (max-width: 768px) {
     flex-direction: column;
   }
 `
@@ -59,7 +59,7 @@ const CoverImageContainer = styled.div`
   align-items: center;
   justify-content: center;
   border: 1px solid var(--line-outline);
-  @media (min-width: 1024px) {
+  @media (min-width: 768px) {
     align-self: flex-start;
     max-width: 24rem;
   }

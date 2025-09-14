@@ -48,8 +48,8 @@ const ProjectSection = styled.div`
 `
 
 const CoverImageContainer = styled.div`
-  max-width: 32rem;
-  align-self: center;
+  align-self: flex-start;
+  max-width: 24rem;
   width: 100%;
   aspect-ratio: 16/9;
   flex-shrink: 0;
@@ -59,9 +59,9 @@ const CoverImageContainer = styled.div`
   align-items: center;
   justify-content: center;
   border: 1px solid var(--line-outline);
-  @media (min-width: 768px) {
-    align-self: flex-start;
-    max-width: 24rem;
+  @media (max-width: 768px) {
+    max-width: 32rem;
+    align-self: center;
   }
 `
 

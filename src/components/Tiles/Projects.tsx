@@ -42,12 +42,14 @@ const ProjectSection = styled.div`
   justify-content: flex-start;
   align-items: flex-start;
   gap: 1rem;
-  @media (max-width: 768px) {
+  @media (max-width: 1024px) {
     flex-direction: column;
   }
 `
 
 const CoverImageContainer = styled.div`
+  max-width: 32rem;
+  align-self: center;
   width: 100%;
   aspect-ratio: 16/9;
   flex-shrink: 0;
@@ -57,6 +59,10 @@ const CoverImageContainer = styled.div`
   align-items: center;
   justify-content: center;
   border: 1px solid var(--line-outline);
+  @media (min-width: 1024px) {
+    align-self: flex-start;
+    max-width: 24rem;
+  }
 `
 
 const CoverImage = styled.img`

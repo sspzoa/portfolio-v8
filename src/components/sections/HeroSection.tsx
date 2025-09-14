@@ -24,7 +24,7 @@ const MainImage = styled.div`
 
 const TitleText = styled.h1`
   font-size: 2.5rem;
-  font-weight: 900;
+  font-weight: 700;
 `
 
 const Contacts = styled.div`

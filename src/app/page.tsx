@@ -25,7 +25,7 @@ const Content = styled.div`
   justify-content: center;
   align-items: center;
   gap: 8rem;
-  @media (max-width: 768px) {
+  @media (max-width: 1024px) {
     gap: 1rem;
   }
 `
@@ -43,7 +43,7 @@ const Row = styled.div`
   flex-direction: row;
   gap: 1rem;
   width: 100%;
-  @media (max-width: 768px) {
+  @media (max-width: 1024px) {
     flex-direction: column;
   }
 `

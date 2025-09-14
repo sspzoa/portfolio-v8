@@ -48,7 +48,6 @@ const ProjectSection = styled.div`
 `
 
 const CoverImageContainer = styled.div`
-  max-width: 24rem;
   width: 100%;
   aspect-ratio: 16/9;
   flex-shrink: 0;

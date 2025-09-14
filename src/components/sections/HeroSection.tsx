@@ -20,19 +20,11 @@ const MainImage = styled.div`
   background-image: url("/photo.jpg");
   background-size: 110%;
   background-position: top -1px center;
-  @media (max-width: 768px) {
-    width: 120px;
-    height: 160px;
-    border-radius: 24px;
-  }
 `
 
 const TitleText = styled.h1`
   font-size: 2.5rem;
   font-weight: 900;
-  @media (max-width: 768px) {
-    font-size: 1.5rem;
-  }
 `
 
 const Contacts = styled.div`

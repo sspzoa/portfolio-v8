@@ -5,9 +5,6 @@ export const TitleText = styled.h3`
   font-size: 1rem;
   font-weight: 700;
   margin: 0;
-  @media (max-width: 768px) {
-    font-size: 0.75rem;
-  }
 `
 
 export const DescriptionText = styled.p`
@@ -21,9 +18,6 @@ const StyledDetailText = styled.div`
   font-weight: 400;
   line-height: 2;
   white-space: pre-line;
-  @media (max-width: 768px) {
-    font-size: 0.75rem;
-  }
 `
 
 const parseLinks = (text: string) => {

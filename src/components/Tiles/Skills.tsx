@@ -84,7 +84,10 @@ export function Skills() {
               <DescriptionText>{category}</DescriptionText>
               <Tags>
                 {groupedSkills[category].map((skill) => (
-                  <Tag key={skill.id}>
+                  <Tag
+                    key={skill.id}
+                    isEmphasized={skill.properties.isMain.checkbox}
+                  >
                     <Image
                       src={skill.properties.icon?.files[0].file.url || ""}
                       title={skill.properties.name?.title[0]?.plain_text}

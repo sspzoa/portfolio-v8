@@ -41,7 +41,7 @@ export const Tags = styled.div`
   gap: 0.5rem;
 `
 
-export const Tag = styled.span`
+export const Tag = styled.span<{ isEmphasized?: boolean }>`
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -52,4 +52,10 @@ export const Tag = styled.span`
   font-size: 0.75rem;
   font-weight: 500;
   border: 1px solid var(--line-outline);
+
+  ${({ isEmphasized }) =>
+    isEmphasized &&
+    `
+      background-color: var(--backgroud-standard-secondary);
+    `}
 `

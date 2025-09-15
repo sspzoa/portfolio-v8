@@ -3440,7 +3440,7 @@ __metadata:
     react: "npm:19.1.0"
     react-dom: "npm:19.1.0"
     react-github-calendar: "npm:^4.5.9"
-    react-scaling-layout: "npm:^1.0.0"
+    react-scaling-layout: "npm:^1.0.1"
     typescript: "npm:^5"
   languageName: unknown
   linkType: soft
@@ -3553,13 +3553,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-scaling-layout@npm:^1.0.0":
-  version: 1.0.0
-  resolution: "react-scaling-layout@npm:1.0.0"
+"react-scaling-layout@npm:^1.0.1":
+  version: 1.0.1
+  resolution: "react-scaling-layout@npm:1.0.1"
   peerDependencies:
     react: ">=16.8.0"
     react-dom: ">=16.8.0"
-  checksum: 10c0/fd436a5fea85cd849dd6980e06e6c216c9d2cc3f215189eff6811f247c3c474ecaed062af5b8972e7cce056804d26f5d824c7b7465c4f61eb4b17f5b54c2daa8
+  checksum: 10c0/30a97b1be6cec343c24f94c3e013708deeebda593ae60e1d2f37aa3db87c5d0b3022f466de520422b115391af9fe5d1e62a3f2d08659748bc4375bcf06b61400
   languageName: node
   linkType: hard
 

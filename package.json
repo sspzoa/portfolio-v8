@@ -23,7 +23,8 @@
     "next": "15.5.2",
     "react": "19.1.0",
     "react-dom": "19.1.0",
-    "react-github-calendar": "^4.5.9"
+    "react-github-calendar": "^4.5.9",
+    "react-scaling-layout": "^1.0.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",

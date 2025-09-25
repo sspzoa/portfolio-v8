@@ -19,8 +19,9 @@ export const Footer = () => {
   return (
     <Container>
       <FooterText>
-        &copy; 2023-{new Date().getFullYear()} Seungpyo Suh. All rights
-        reserved.
+        &copy; 2023-{new Date().getFullYear()} Seungpyo Suh.
+        <br />
+        All rights reserved.
       </FooterText>
     </Container>
   )

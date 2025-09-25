@@ -62,18 +62,6 @@
 
   --core-accent: rgba(84, 114, 235, 1);
   --core-accent-translucent: rgba(84, 114, 235, 0.1);
-
-  --core-status-positive: var(--solid-green);
-  --core-status-warning: var(--solid-yellow);
-  --core-status-negative: var(--solid-red);
-
-  --syntax-comment: var(--content-standard-tertiary);
-  --syntax-function: rgba(91, 89, 222, 1);
-  --syntax-variable: rgba(224, 136, 4, 1);
-  --syntax-string: rgba(50, 204, 88, 1);
-  --syntax-constant: rgb(5, 127, 255, 1);
-  --syntax-operator: rgb(183, 86, 232, 1);
-  --syntax-keyword: rgb(255, 50, 90, 1);
 }
 
 @media (prefers-color-scheme: dark) {

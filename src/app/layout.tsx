@@ -4,7 +4,6 @@ import React from "react"
 import { Analytics } from "@vercel/analytics/next"
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import { Providers } from "@/providers/providers"
-import { ScalingLayout } from "react-scaling-layout"
 
 export const metadata: Metadata = {
   title: "Seungpyo Suh · 서승표",
@@ -31,9 +30,7 @@ export default function RootLayout({
       <body className="antialiased">
         <Analytics />
         <SpeedInsights />
-        <Providers>
-          <ScalingLayout minWidth={512}>{children}</ScalingLayout>
-        </Providers>
+        <Providers>{children}</Providers>
       </body>
     </html>
   )

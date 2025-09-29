@@ -19,6 +19,9 @@ export const TileContainer = styled.div<{ gap?: string }>`
   flex-direction: column;
   gap: ${(props) => props.gap || "2.75rem"};
   padding: 0.5rem;
+  @media (max-width: 768px) {
+    padding: 0;
+  }
 `
 
 export const Content = styled.div`

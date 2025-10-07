@@ -3,6 +3,13 @@ import { useAboutMe } from "@/hooks/api"
 import Skeleton from "@/components/common/Skeleton"
 import { DetailText } from "@/components/common/Typo"
 import { TileContainer } from "../common/Layout"
+import styled from "@emotion/styled"
+
+const SkeletonContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+`
 
 export function AboutMe() {
   const { data: aboutme, isLoading } = useAboutMe()
@@ -11,11 +18,18 @@ export function AboutMe() {
     return (
       <Tile title="About Me">
         <TileContainer>
-          <Skeleton width="100%" height={20} borderRadius="4px" />
-          <Skeleton width="100%" height={20} borderRadius="4px" />
-          <Skeleton width="80%" height={20} borderRadius="4px" />
-          <Skeleton width="100%" height={20} borderRadius="4px" />
-          <Skeleton width="90%" height={20} borderRadius="4px" />
+          <SkeletonContainer>
+            <Skeleton width="100%" height={20} borderRadius="4px" />
+            <Skeleton width="100%" height={20} borderRadius="4px" />
+            <Skeleton width="80%" height={20} borderRadius="4px" />
+            <Skeleton width="90%" height={20} borderRadius="4px" />
+            <Skeleton width="40%" height={20} borderRadius="4px" />
+            <Skeleton width="100%" height={20} borderRadius="4px" />
+            <Skeleton width="100%" height={20} borderRadius="4px" />
+            <Skeleton width="80%" height={20} borderRadius="4px" />
+            <Skeleton width="90%" height={20} borderRadius="4px" />
+            <Skeleton width="40%" height={20} borderRadius="4px" />
+          </SkeletonContainer>
         </TileContainer>
       </Tile>
     )

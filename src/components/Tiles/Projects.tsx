@@ -172,7 +172,7 @@ export function Projects() {
                     )
                   </TitleText>
                   <DescriptionText>
-                    {project.properties.teamSize.number}인 프로젝트
+                    {project.properties.teamSize.number}P project
                     {project.properties.shortDescription?.rich_text[0]
                       ?.plain_text && (
                       <>
@@ -205,9 +205,7 @@ export function Projects() {
             onClick={() => setShowSideProjects(!showSideProjects)}
           >
             <DetailText>
-              {showSideProjects
-                ? `사이드 프로젝트 숨기기`
-                : `사이드 프로젝트 ${sideProjects.length}개 더보기`}
+              {showSideProjects ? "Show less" : "Show more"}
             </DetailText>
           </ShowMoreButton>
         )}

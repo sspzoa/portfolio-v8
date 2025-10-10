@@ -6,6 +6,7 @@ import { CertificateType } from "@/types/CertificateType"
 import { ExperienceType } from "@/types/ExperienceType"
 import { ProjectType } from "@/types/ProjectType"
 import { SkillType } from "@/types/SkillType"
+import { SupportedLanguage } from "@/lib/translate"
 
 export const aboutmeAtom = atom<AboutMeType | null>(null)
 export const activitiesAtom = atom<ActivityType[]>([])
@@ -14,3 +15,4 @@ export const certificatesAtom = atom<CertificateType[]>([])
 export const experiencesAtom = atom<ExperienceType[]>([])
 export const projectsAtom = atom<ProjectType[]>([])
 export const skillsAtom = atom<SkillType[]>([])
+export const languageAtom = atom<SupportedLanguage>("ko")

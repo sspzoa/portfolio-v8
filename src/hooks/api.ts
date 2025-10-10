@@ -9,6 +9,7 @@ import {
   experiencesAtom,
   projectsAtom,
   skillsAtom,
+  languageAtom,
 } from "@/store/atoms"
 import { AboutMeType } from "@/types/AboutMeType"
 import { ActivityType } from "@/types/ActivityType"
@@ -25,10 +26,12 @@ const fetcher = async (url: string) => {
 
 export const useAboutMe = () => {
   const [aboutme, setAboutme] = useAtom(aboutmeAtom)
+  const [language] = useAtom(languageAtom)
 
   const query = useQuery({
-    queryKey: ["aboutme"],
-    queryFn: (): Promise<{ results: AboutMeType[] }> => fetcher("/api/aboutme"),
+    queryKey: ["aboutme", language],
+    queryFn: (): Promise<{ results: AboutMeType[] }> =>
+      fetcher(`/api/aboutme?lang=${language}`),
   })
 
   useEffect(() => {
@@ -66,10 +69,12 @@ export const useActivities = () => {
 
 export const useAwards = () => {
   const [awards, setAwards] = useAtom(awardsAtom)
+  const [language] = useAtom(languageAtom)
 
   const query = useQuery({
-    queryKey: ["awards"],
-    queryFn: (): Promise<{ results: AwardType[] }> => fetcher("/api/awards"),
+    queryKey: ["awards", language],
+    queryFn: (): Promise<{ results: AwardType[] }> =>
+      fetcher(`/api/awards?lang=${language}`),
   })
 
   useEffect(() => {
@@ -86,11 +91,12 @@ export const useAwards = () => {
 
 export const useCertificates = () => {
   const [certificates, setCertificates] = useAtom(certificatesAtom)
+  const [language] = useAtom(languageAtom)
 
   const query = useQuery({
-    queryKey: ["certificates"],
+    queryKey: ["certificates", language],
     queryFn: (): Promise<{ results: CertificateType[] }> =>
-      fetcher("/api/certificates"),
+      fetcher(`/api/certificates?lang=${language}`),
   })
 
   useEffect(() => {
@@ -107,11 +113,12 @@ export const useCertificates = () => {
 
 export const useExperiences = () => {
   const [experiences, setExperiences] = useAtom(experiencesAtom)
+  const [language] = useAtom(languageAtom)
 
   const query = useQuery({
-    queryKey: ["experiences"],
+    queryKey: ["experiences", language],
     queryFn: (): Promise<{ results: ExperienceType[] }> =>
-      fetcher("/api/experiences"),
+      fetcher(`/api/experiences?lang=${language}`),
   })
 
   useEffect(() => {
@@ -128,11 +135,12 @@ export const useExperiences = () => {
 
 export const useProjects = () => {
   const [projects, setProjects] = useAtom(projectsAtom)
+  const [language] = useAtom(languageAtom)
 
   const query = useQuery({
-    queryKey: ["projects"],
+    queryKey: ["projects", language],
     queryFn: (): Promise<{ results: ProjectType[] }> =>
-      fetcher("/api/projects"),
+      fetcher(`/api/projects?lang=${language}`),
   })
 
   useEffect(() => {

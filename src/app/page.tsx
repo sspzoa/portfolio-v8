@@ -10,6 +10,7 @@ import { Certificates } from "@/components/Tiles/Certificates"
 import { Projects } from "@/components/Tiles/Projects"
 import { Contributions } from "@/components/Tiles/Contributions"
 import { HeroSection } from "@/components/sections/HeroSection"
+import LanguageSelector from "@/components/LanguageSelector"
 
 const Container = styled.div`
   display: flex;
@@ -58,6 +59,7 @@ const Column = styled.div`
 export default function Home() {
   return (
     <Container>
+      <LanguageSelector />
       <HeroSection />
       <Content>
         <TileArea>

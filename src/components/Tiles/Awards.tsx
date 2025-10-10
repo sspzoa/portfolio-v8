@@ -1,7 +1,6 @@
 import { Tile } from "@/components/common/Tile"
 import { useAwards } from "@/hooks/api"
 import Skeleton from "@/components/common/Skeleton"
-import styled from "@emotion/styled"
 import { DescriptionText, TitleText } from "@/components/common/Typo"
 import { Card, Content, TileContainer } from "@/components/common/Layout"
 

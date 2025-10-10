@@ -40,6 +40,10 @@ const Container = styled.div`
   top: 24px;
   right: 24px;
   z-index: 50;
+  @media (max-width: 768px) {
+    top: 12px;
+    right: 12px;
+  }
 `
 
 const LanguageBar = styled.div`

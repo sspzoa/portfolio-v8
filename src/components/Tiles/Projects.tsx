@@ -153,7 +153,14 @@ export function Projects() {
                   alt={project.properties.name?.title[0]?.plain_text}
                 />
               ) : (
-                <span style={{ fontSize: "2rem", color: "var(--content-standard-secondary)" }}>📱</span>
+                <span
+                  style={{
+                    fontSize: "2rem",
+                    color: "var(--content-standard-secondary)",
+                  }}
+                >
+                  📱
+                </span>
               )}
             </CoverImageContainer>
             <CardColumn>
@@ -166,7 +173,14 @@ export function Projects() {
                       alt={project.properties.name?.title[0]?.plain_text}
                     />
                   ) : (
-                    <span style={{ fontSize: "1rem", color: "var(--content-standard-secondary)" }}>📱</span>
+                    <span
+                      style={{
+                        fontSize: "1rem",
+                        color: "var(--content-standard-secondary)",
+                      }}
+                    >
+                      📱
+                    </span>
                   )}
                 </Icon>
                 <Content>

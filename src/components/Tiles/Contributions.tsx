@@ -38,8 +38,20 @@ export function Contributions() {
         <GitHubCalendar
           username="sspzoa"
           theme={{
-            light: ['var(--components-fill-standard-secondary)', 'var(--core-accent-translucent)', 'var(--core-accent)', 'var(--core-accent)', 'var(--core-accent)'],
-            dark: ['var(--components-fill-standard-secondary)', 'var(--core-accent-translucent)', 'var(--core-accent)', 'var(--core-accent)', 'var(--core-accent)']
+            light: [
+              "var(--components-fill-standard-secondary)",
+              "var(--core-accent-translucent)",
+              "var(--core-accent)",
+              "var(--core-accent)",
+              "var(--core-accent)",
+            ],
+            dark: [
+              "var(--components-fill-standard-secondary)",
+              "var(--core-accent-translucent)",
+              "var(--core-accent)",
+              "var(--core-accent)",
+              "var(--core-accent)",
+            ],
           }}
         />
       </Container>

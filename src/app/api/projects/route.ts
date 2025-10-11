@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server"
 import { translateProject, SupportedLanguage } from "@/lib/translate"
 import { ProjectType } from "@/types/ProjectType"
+import { getOrCreateApiTranslation } from "@/lib/apiCache"
 
 const PROJECTS_DATABASE_ID = "c47cae2234124b8abf20e1ec41f864e0"
 
@@ -36,10 +37,13 @@ export async function GET(request: Request) {
   const data = await res.json()
 
   if (lang !== "ko" && data.results && data.results.length > 0) {
-    const translatedResults = await Promise.all(
-      data.results.map((item: ProjectType) => translateProject(item, lang))
+    const translatedData = await getOrCreateApiTranslation(
+      "projects",
+      data,
+      lang,
+      translateProject
     )
-    data.results = translatedResults
+    return NextResponse.json(translatedData)
   }
 
   return NextResponse.json(data)

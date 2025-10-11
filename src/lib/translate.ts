@@ -4,6 +4,7 @@ import { ExperienceType } from "@/types/ExperienceType"
 import { AwardType } from "@/types/AwardType"
 import { CertificateType } from "@/types/CertificateType"
 import { ProjectType } from "@/types/ProjectType"
+import { getOrCreateTranslation, extractItemId } from "./translationCache"
 
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
@@ -18,6 +19,19 @@ const languageMap = {
 }
 
 export async function translateAboutMe(
+  data: AboutMeType,
+  targetLang: SupportedLanguage
+): Promise<AboutMeType> {
+  return getOrCreateTranslation(
+    "aboutme",
+    data,
+    extractItemId(data as unknown as Record<string, unknown>),
+    targetLang,
+    translateAboutMeInternal
+  )
+}
+
+async function translateAboutMeInternal(
   data: AboutMeType,
   targetLang: SupportedLanguage
 ): Promise<AboutMeType> {
@@ -38,6 +52,19 @@ export async function translateAboutMe(
 }
 
 export async function translateExperience(
+  data: ExperienceType,
+  targetLang: SupportedLanguage
+): Promise<ExperienceType> {
+  return getOrCreateTranslation(
+    "experiences",
+    data,
+    extractItemId(data as unknown as Record<string, unknown>),
+    targetLang,
+    translateExperienceInternal
+  )
+}
+
+async function translateExperienceInternal(
   data: ExperienceType,
   targetLang: SupportedLanguage
 ): Promise<ExperienceType> {
@@ -75,6 +102,19 @@ export async function translateAward(
   data: AwardType,
   targetLang: SupportedLanguage
 ): Promise<AwardType> {
+  return getOrCreateTranslation(
+    "awards",
+    data,
+    extractItemId(data as unknown as Record<string, unknown>),
+    targetLang,
+    translateAwardInternal
+  )
+}
+
+async function translateAwardInternal(
+  data: AwardType,
+  targetLang: SupportedLanguage
+): Promise<AwardType> {
   if (targetLang === "ko") return data
 
   const name = data.properties.name?.title?.[0]?.plain_text
@@ -100,6 +140,19 @@ export async function translateAward(
 }
 
 export async function translateCertificate(
+  data: CertificateType,
+  targetLang: SupportedLanguage
+): Promise<CertificateType> {
+  return getOrCreateTranslation(
+    "certificates",
+    data,
+    extractItemId(data as unknown as Record<string, unknown>),
+    targetLang,
+    translateCertificateInternal
+  )
+}
+
+async function translateCertificateInternal(
   data: CertificateType,
   targetLang: SupportedLanguage
 ): Promise<CertificateType> {
@@ -134,6 +187,19 @@ export async function translateCertificate(
 }
 
 export async function translateProject(
+  data: ProjectType,
+  targetLang: SupportedLanguage
+): Promise<ProjectType> {
+  return getOrCreateTranslation(
+    "projects",
+    data,
+    extractItemId(data as unknown as Record<string, unknown>),
+    targetLang,
+    translateProjectInternal
+  )
+}
+
+async function translateProjectInternal(
   data: ProjectType,
   targetLang: SupportedLanguage
 ): Promise<ProjectType> {
@@ -179,10 +245,12 @@ async function translateText(
 
 Special translation rules:
 - "서승표" should be translated to "Seungpyo Suh" in English and "徐丞杓" in Japanese
-- Keep these name translations consistent throughout all content`
+- Keep these name translations consistent throughout all content
+- Preserve all formatting including text wrapped with double asterisks (**bold text**) for emphasis
+- Maintain the same formatting structure in the translated output`
 
     const response = await openai.chat.completions.create({
-      model: "gpt-4o-mini",
+      model: "gpt-5-mini",
       messages: [
         {
           role: "system",
@@ -193,7 +261,6 @@ Special translation rules:
           content: text,
         },
       ],
-      temperature: 0.1,
     })
 
     return response.choices[0].message.content || text

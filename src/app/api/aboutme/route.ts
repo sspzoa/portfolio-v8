@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server"
 import { translateAboutMe, SupportedLanguage } from "@/lib/translate"
 import { AboutMeType } from "@/types/AboutMeType"
+import { getOrCreateApiTranslation } from "@/lib/apiCache"
 
 const ABOUTME_DATABASE_ID = "25fcc9b72a9c801ba124c5d2158a7f84"
 
@@ -26,10 +27,13 @@ export async function GET(request: Request) {
   const data = await res.json()
 
   if (lang !== "ko" && data.results && data.results.length > 0) {
-    const translatedResults = await Promise.all(
-      data.results.map((item: AboutMeType) => translateAboutMe(item, lang))
+    const translatedData = await getOrCreateApiTranslation(
+      "aboutme",
+      data,
+      lang,
+      translateAboutMe
     )
-    data.results = translatedResults
+    return NextResponse.json(translatedData)
   }
 
   return NextResponse.json(data)

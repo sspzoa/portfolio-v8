@@ -55,10 +55,20 @@ export const Tag = styled.span<{ isEmphasized?: boolean }>`
   font-size: 0.75rem;
   font-weight: 500;
   border: 1px solid var(--line-outline);
+  color: var(--content-standard-secondary);
+  background-color: var(--components-fill-standard-primary);
+  transition: all 0.2s ease;
 
   ${({ isEmphasized }) =>
     isEmphasized &&
     `
-      background-color: var(--backgroud-standard-secondary);
+      background-color: var(--core-accent-translucent);
+      color: var(--core-accent);
+      border: 1px solid var(--core-accent);
     `}
+
+  &:hover {
+    background-color: var(--components-interactive-hover);
+    color: var(--content-standard-primary);
+  }
 `

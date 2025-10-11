@@ -72,15 +72,22 @@ const CoverImage = styled.img`
 `
 
 const ShowMoreButton = styled.button`
-  background: none;
-  border: none;
+  background: var(--components-fill-standard-primary);
+  border: 1px solid var(--line-outline);
   color: var(--content-standard-secondary);
   cursor: pointer;
-  padding: 0.5rem 0;
+  padding: 0.75rem 1rem;
   text-align: center;
+  border-radius: 12px;
+  transition: all 0.2s ease;
 
   &:hover {
+    background: var(--components-interactive-hover);
     color: var(--content-standard-primary);
+  }
+
+  &:active {
+    background: var(--components-interactive-pressed);
   }
 `
 
@@ -146,7 +153,7 @@ export function Projects() {
                   alt={project.properties.name?.title[0]?.plain_text}
                 />
               ) : (
-                <span style={{ fontSize: "2rem" }}>📱</span>
+                <span style={{ fontSize: "2rem", color: "var(--content-standard-secondary)" }}>📱</span>
               )}
             </CoverImageContainer>
             <CardColumn>
@@ -159,7 +166,7 @@ export function Projects() {
                       alt={project.properties.name?.title[0]?.plain_text}
                     />
                   ) : (
-                    <span style={{ fontSize: "1rem" }}>📱</span>
+                    <span style={{ fontSize: "1rem", color: "var(--content-standard-secondary)" }}>📱</span>
                   )}
                 </Icon>
                 <Content>

@@ -34,6 +34,7 @@ const MainImage = styled.div`
 const TitleText = styled.h1`
   font-size: 2.5rem;
   font-weight: 700;
+  color: var(--content-standard-primary);
   @media (max-width: 768px) {
     font-size: 1.5rem;
   }
@@ -45,6 +46,16 @@ const Contacts = styled.div`
   gap: 1rem;
   width: 100%;
   justify-content: center;
+
+  a {
+    color: var(--content-standard-secondary);
+    transition: all 0.2s ease;
+
+    &:hover {
+      color: var(--core-accent);
+      transform: translateY(-2px);
+    }
+  }
 `
 
 export function HeroSection() {

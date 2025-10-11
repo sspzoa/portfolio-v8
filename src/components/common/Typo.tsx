@@ -5,12 +5,14 @@ export const TitleText = styled.h3`
   font-size: 1rem;
   font-weight: 700;
   margin: 0;
+  color: var(--content-standard-primary);
 `
 
 export const DescriptionText = styled.p`
   font-size: 0.75rem;
   font-weight: 500;
   margin: 0;
+  color: var(--content-standard-secondary);
 `
 
 const StyledDetailText = styled.div`
@@ -18,6 +20,7 @@ const StyledDetailText = styled.div`
   font-weight: 500;
   line-height: 2;
   white-space: pre-line;
+  color: var(--content-standard-primary);
 `
 
 const parseLinks = (text: string) => {
@@ -36,7 +39,7 @@ const parseLinks = (text: string) => {
           target="_blank"
           rel="noopener noreferrer"
           style={{
-            color: "#0066cc",
+            color: "var(--core-accent)",
             fontWeight: 700,
             textDecoration: "underline",
           }}

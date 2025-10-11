@@ -66,7 +66,7 @@ export function Experiences() {
                     }
                   />
                 ) : (
-                  <span style={{ fontSize: "1.5rem" }}>💼</span>
+                  <span style={{ fontSize: "1.5rem", color: "var(--content-standard-secondary)" }}>💼</span>
                 )}
               </Icon>
               <Content>

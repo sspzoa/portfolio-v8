@@ -15,7 +15,6 @@ const DATABASE_IDS = {
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url)
   const lang = (searchParams.get("lang") as SupportedLanguage) || "ko"
-  const type = searchParams.get("type")
 
   try {
     const [
@@ -68,12 +67,6 @@ export async function GET(request: Request) {
         items.forEach((item: Record<string, unknown>, itemIndex: number) => {
           applyTranslations(item, type, itemIndex, translationMap)
         })
-      })
-    }
-
-    if (type && type in data) {
-      return NextResponse.json({
-        results: data[type as keyof typeof data] || [],
       })
     }
 

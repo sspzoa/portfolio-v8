@@ -62,7 +62,16 @@ export const usePortfolio = () => {
       setProjects(query.data.projects)
       setSkills(query.data.skills)
     }
-  }, [query.data, setAboutme, setActivities, setAwards, setCertificates, setExperiences, setProjects, setSkills])
+  }, [
+    query.data,
+    setAboutme,
+    setActivities,
+    setAwards,
+    setCertificates,
+    setExperiences,
+    setProjects,
+    setSkills,
+  ])
 
   return {
     ...query,
@@ -77,4 +86,3 @@ export const usePortfolio = () => {
     },
   }
 }
-

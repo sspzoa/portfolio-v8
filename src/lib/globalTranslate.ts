@@ -1,6 +1,6 @@
-import { batchTranslateTexts, SupportedLanguage } from "./translate"
-import { generateHash } from "./hash"
-import { getTranslationFromCache, saveTranslationToCache } from "./mongodb"
+import { batchTranslateTexts, SupportedLanguage } from "@/lib/translate"
+import { generateHash } from "@/lib/hash"
+import { getTranslationFromCache, saveTranslationToCache } from "@/lib/mongodb"
 
 interface GlobalTranslationData {
   aboutme: Record<string, unknown>[]

@@ -2,7 +2,7 @@ import { Tile } from "@/components/common/Tile"
 import { useAboutMe } from "@/hooks/api"
 import Skeleton from "@/components/common/Skeleton"
 import { DetailText } from "@/components/common/Typo"
-import { TileContainer } from "../common/Layout"
+import { TileContainer } from "@/components/common/Layout"
 import styled from "@emotion/styled"
 
 const SkeletonContainer = styled.div`

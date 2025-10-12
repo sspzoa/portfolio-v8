@@ -1,11 +1,13 @@
 import { atom } from "jotai"
-import { AboutMeType } from "@/types/AboutMeType"
-import { ActivityType } from "@/types/ActivityType"
-import { AwardType } from "@/types/AwardType"
-import { CertificateType } from "@/types/CertificateType"
-import { ExperienceType } from "@/types/ExperienceType"
-import { ProjectType } from "@/types/ProjectType"
-import { SkillType } from "@/types/SkillType"
+import {
+  AboutMeType,
+  ActivityType,
+  AwardType,
+  CertificateType,
+  ExperienceType,
+  ProjectType,
+  SkillType,
+} from "@/types"
 import { SupportedLanguage } from "@/lib/translate"
 
 export const aboutmeAtom = atom<AboutMeType | null>(null)

@@ -1,11 +1,11 @@
-import { Tile } from "@/components/common/Tile"
+import { Tile } from "@/components/ui/tile"
 import { useSkills } from "@/hooks/api"
-import Skeleton from "@/components/common/Skeleton"
+import Skeleton from "@/components/ui/skeleton"
 import Image from "next/image"
 import styled from "@emotion/styled"
-import { Tag, Tags, TileContainer } from "@/components/common/Layout"
-import { SkillType } from "@/types/SkillType"
-import { DescriptionText } from "@/components/common/Typo"
+import { Tag, Tags, TileContainer } from "@/components/ui/layout"
+import { SkillType } from "@/types"
+import { DescriptionText } from "@/components/ui/typo"
 
 const Categories = styled.div`
   display: flex;

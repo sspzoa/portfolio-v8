@@ -1,13 +1,9 @@
-import { Tile } from "@/components/common/Tile"
+import { Tile } from "@/components/ui/tile"
 import { useProjects } from "@/hooks/api"
-import Skeleton from "@/components/common/Skeleton"
+import Skeleton from "@/components/ui/skeleton"
 import styled from "@emotion/styled"
 import { atom, useAtom } from "jotai"
-import {
-  DescriptionText,
-  DetailText,
-  TitleText,
-} from "@/components/common/Typo"
+import { DescriptionText, DetailText, TitleText } from "@/components/ui/typo"
 import {
   Card,
   CardColumn,
@@ -15,8 +11,8 @@ import {
   Tag,
   Tags,
   TileContainer,
-} from "@/components/common/Layout"
-import { Icon, IconImage } from "@/components/common/Object"
+} from "@/components/ui/layout"
+import { Icon, IconImage } from "@/components/ui/object"
 
 const showSideProjectsAtom = atom(false)
 
@@ -209,11 +205,13 @@ export function Projects() {
                 </Content>
               </Card>
               <Tags>
-                {project.properties.tags?.multi_select?.map((tag, index) => (
-                  <Tag key={index}>
-                    <DescriptionText>{tag.name}</DescriptionText>
-                  </Tag>
-                ))}
+                {project.properties.tags?.multi_select?.map(
+                  (tag: { name: string }, index: number) => (
+                    <Tag key={index}>
+                      <DescriptionText>{tag.name}</DescriptionText>
+                    </Tag>
+                  )
+                )}
               </Tags>
               <DetailText>
                 {project.properties.description?.rich_text[0].plain_text}

@@ -1,9 +1,0 @@
-export interface SkillType {
-  id: string
-  properties: {
-    name?: { title: { plain_text: string }[] }
-    icon?: { files: Array<{ file: { url: string } }> }
-    category?: { select: { name: string } }
-    isMain: { checkbox: boolean }
-  }
-}

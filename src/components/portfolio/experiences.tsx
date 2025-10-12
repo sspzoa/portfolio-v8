@@ -1,18 +1,14 @@
-import { Tile } from "@/components/common/Tile"
+import { Tile } from "@/components/ui/tile"
 import { useExperiences } from "@/hooks/api"
-import Skeleton from "@/components/common/Skeleton"
-import {
-  DescriptionText,
-  DetailText,
-  TitleText,
-} from "@/components/common/Typo"
+import Skeleton from "@/components/ui/skeleton"
+import { DescriptionText, DetailText, TitleText } from "@/components/ui/typo"
 import {
   Card,
   CardColumn,
   Content,
   TileContainer,
-} from "@/components/common/Layout"
-import { Icon, IconImage } from "@/components/common/Object"
+} from "@/components/ui/layout"
+import { Icon, IconImage } from "@/components/ui/object"
 
 const formatDate = (dateString?: string) => {
   if (!dateString) return ""

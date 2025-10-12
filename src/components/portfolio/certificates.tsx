@@ -1,8 +1,8 @@
-import { Tile } from "@/components/common/Tile"
+import { Tile } from "@/components/ui/tile"
 import { useCertificates } from "@/hooks/api"
-import Skeleton from "@/components/common/Skeleton"
-import { Card, Content, TileContainer } from "@/components/common/Layout"
-import { DescriptionText, TitleText } from "@/components/common/Typo"
+import Skeleton from "@/components/ui/skeleton"
+import { Card, Content, TileContainer } from "@/components/ui/layout"
+import { DescriptionText, TitleText } from "@/components/ui/typo"
 
 const formatDate = (dateString?: string) => {
   if (!dateString) return ""

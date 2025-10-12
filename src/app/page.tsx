@@ -1,16 +1,16 @@
 "use client"
 
 import styled from "@emotion/styled"
-import { Footer } from "@/components/Footer"
-import { AboutMe } from "@/components/Tiles/AboutMe"
-import { Skills } from "@/components/Tiles/Skills"
-import { Experiences } from "@/components/Tiles/Experiences"
-import { Awards } from "@/components/Tiles/Awards"
-import { Certificates } from "@/components/Tiles/Certificates"
-import { Projects } from "@/components/Tiles/Projects"
-import { Contributions } from "@/components/Tiles/Contributions"
-import { HeroSection } from "@/components/sections/HeroSection"
-import LanguageSelector from "@/components/LanguageSelector"
+import { Footer } from "@/components/portfolio/footer"
+import { AboutMe } from "@/components/portfolio/about"
+import { Skills } from "@/components/portfolio/skills"
+import { Experiences } from "@/components/portfolio/experiences"
+import { Awards } from "@/components/portfolio/awards"
+import { Certificates } from "@/components/portfolio/certificates"
+import { Projects } from "@/components/portfolio/projects"
+import { Contributions } from "@/components/portfolio/contributions"
+import { HeroSection } from "@/components/portfolio/hero"
+import LanguageSelector from "@/components/ui/language-selector"
 
 const Container = styled.div`
   display: flex;

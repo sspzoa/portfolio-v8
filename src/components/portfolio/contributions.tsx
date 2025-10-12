@@ -1,4 +1,4 @@
-import { Tile } from "@/components/common/Tile"
+import { Tile } from "@/components/ui/tile"
 import GitHubCalendar from "react-github-calendar"
 import styled from "@emotion/styled"
 

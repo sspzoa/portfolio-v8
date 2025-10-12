@@ -9,7 +9,6 @@ interface Language {
   code: SupportedLanguage
   label: string
   flag: string
-  alertMessage: string
 }
 
 const languages: Language[] = [
@@ -17,21 +16,16 @@ const languages: Language[] = [
     code: "ko",
     label: "KO",
     flag: "🇰🇷",
-    alertMessage: "원본 언어입니다.",
   },
   {
     code: "en",
     label: "EN",
     flag: "🇺🇸",
-    alertMessage:
-      "This content has been translated using AI and may not be completely accurate.",
   },
   {
     code: "ja",
     label: "JP",
     flag: "🇯🇵",
-    alertMessage:
-      "このコンテンツはAIによって翻訳されており、完全に正確ではない可能性があります。",
   },
 ]
 
@@ -114,10 +108,6 @@ export default function LanguageSelector() {
   const [language, setLanguage] = useAtom(languageAtom)
 
   const handleLanguageChange = (langCode: SupportedLanguage) => {
-    const selectedLanguage = languages.find((lang) => lang.code === langCode)
-    if (selectedLanguage && langCode !== "ko") {
-      alert(selectedLanguage.alertMessage)
-    }
     setLanguage(langCode)
   }
 

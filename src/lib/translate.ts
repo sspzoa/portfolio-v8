@@ -60,7 +60,6 @@ Example format:
 
     const translatedContent = response.choices[0].message.content || ""
 
-    // 번호 형식에서 개별 번역 추출
     const translatedTexts = translatedContent
       .split(/\n\n\d+\.\s/)
       .map((text) => text.replace(/^\d+\.\s/, "").trim())

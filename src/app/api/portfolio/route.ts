@@ -15,10 +15,9 @@ const DATABASE_IDS = {
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url)
   const lang = (searchParams.get("lang") as SupportedLanguage) || "ko"
-  const type = searchParams.get("type") // 특정 타입만 가져오기
+  const type = searchParams.get("type")
 
   try {
-    // 모든 데이터를 병렬로 가져오기
     const [
       aboutmeRes,
       awardsRes,
@@ -65,7 +64,6 @@ export async function GET(request: Request) {
     if (lang !== "ko") {
       const translationMap = await getGlobalTranslations(data, lang)
 
-      // 번역 적용
       Object.entries(data).forEach(([type, items]) => {
         items.forEach((item: Record<string, unknown>, itemIndex: number) => {
           applyTranslations(item, type, itemIndex, translationMap)
@@ -73,7 +71,6 @@ export async function GET(request: Request) {
       })
     }
 
-    // 특정 타입만 요청된 경우 해당 데이터만 반환
     if (type && type in data) {
       return NextResponse.json({
         results: data[type as keyof typeof data] || [],
@@ -120,15 +117,14 @@ function applyTranslations(
 ) {
   if (!item.properties) return
 
-  // 각 타입별로 번역할 필드 정의
   const fieldsToTranslate: Record<string, string[]> = {
     aboutme: ["content"],
     awards: ["name", "description"],
     certificates: ["name", "kind", "institution"],
     experiences: ["name", "organization", "description"],
     projects: ["name", "description", "shortDescription"],
-    activities: [], // activities는 번역하지 않음
-    skills: [], // skills는 번역하지 않음
+    activities: [],
+    skills: [],
   }
 
   const fields = fieldsToTranslate[type] || []

@@ -1,4 +1,3 @@
-// Portfolio Types
 export interface AboutMeType {
   properties: {
     content?: { title: { plain_text: string }[] }

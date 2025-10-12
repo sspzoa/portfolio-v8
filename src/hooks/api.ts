@@ -162,7 +162,8 @@ export const useSkills = () => {
 
   const query = useQuery({
     queryKey: ["skills"],
-    queryFn: (): Promise<{ results: SkillType[] }> => fetcher("/api/skills"),
+    queryFn: (): Promise<{ results: SkillType[] }> =>
+      fetcher("/api/skills"),
   })
 
   useEffect(() => {

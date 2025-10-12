@@ -2,14 +2,14 @@ import { batchTranslateTexts, SupportedLanguage } from "@/lib/translate"
 import { generateHash } from "@/lib/hash"
 import { getTranslationFromCache, saveTranslationToCache } from "@/lib/mongodb"
 
-export interface GlobalTranslationData {
-  aboutme?: Record<string, unknown>[]
-  awards?: Record<string, unknown>[]
-  certificates?: Record<string, unknown>[]
-  experiences?: Record<string, unknown>[]
-  projects?: Record<string, unknown>[]
-  activities?: Record<string, unknown>[]
-  skills?: Record<string, unknown>[]
+interface GlobalTranslationData {
+  aboutme: Record<string, unknown>[]
+  awards: Record<string, unknown>[]
+  certificates: Record<string, unknown>[]
+  experiences: Record<string, unknown>[]
+  projects: Record<string, unknown>[]
+  activities: Record<string, unknown>[]
+  skills: Record<string, unknown>[]
 }
 
 interface GlobalTextMapping {
@@ -43,17 +43,15 @@ export async function getGlobalTranslations(
   const mappings: GlobalTextMapping[] = []
 
   Object.entries(data).forEach(([type, items]) => {
-    if (items && Array.isArray(items)) {
-      items.forEach((item: Record<string, unknown>, itemIndex: number) => {
-        extractTextsFromItem(
-          item,
-          type as keyof GlobalTranslationData,
-          itemIndex,
-          allTexts,
-          mappings
-        )
-      })
-    }
+    items.forEach((item: Record<string, unknown>, itemIndex: number) => {
+      extractTextsFromItem(
+        item,
+        type as keyof GlobalTranslationData,
+        itemIndex,
+        allTexts,
+        mappings
+      )
+    })
   })
 
   const translatedTexts = await batchTranslateTexts(

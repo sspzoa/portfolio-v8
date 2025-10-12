@@ -29,7 +29,7 @@ export async function batchTranslateTexts(
 Return ONLY the translated texts in the same numbered format, maintaining consistency across all translations.
 
 Special translation rules:
-- "서승표" should be translated to "Seungpyo Suh" in English and "徐丞杓" in Japanese
+- "서승표" should be translated to "Seungpyo Suh" in English and "ソ・スンピョ" in Japanese
 - Keep these name translations consistent throughout all content
 - Preserve all formatting including text wrapped with double asterisks (**bold text**) for emphasis
 - Maintain the same formatting structure in the translated output

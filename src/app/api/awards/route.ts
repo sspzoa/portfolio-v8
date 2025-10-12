@@ -1,6 +1,10 @@
 import { NextResponse } from "next/server"
 import { SupportedLanguage } from "@/lib/translate"
-import { DATABASE_IDS, fetchNotionData, applyTranslations } from "@/lib/portfolio"
+import {
+  DATABASE_IDS,
+  fetchNotionData,
+  applyTranslations,
+} from "@/lib/portfolio"
 import { getGlobalTranslations } from "@/lib/globalTranslate"
 
 export async function GET(request: Request) {

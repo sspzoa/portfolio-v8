@@ -1,5 +1,5 @@
 import { Tile } from "@/components/ui/tile"
-import { useAboutMe } from "@/hooks/api"
+import { usePortfolio } from "@/hooks/api"
 import Skeleton from "@/components/ui/skeleton"
 import { DetailText } from "@/components/ui/typo"
 import { TileContainer } from "@/components/ui/layout"
@@ -12,7 +12,8 @@ const SkeletonContainer = styled.div`
 `
 
 export function AboutMe() {
-  const { data: aboutme, isLoading } = useAboutMe()
+  const { data, isLoading } = usePortfolio()
+  const aboutme = data?.aboutme
 
   if (isLoading) {
     return (

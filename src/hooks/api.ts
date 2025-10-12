@@ -33,7 +33,7 @@ export const useAboutMe = () => {
   const query = useQuery({
     queryKey: ["aboutme", language],
     queryFn: (): Promise<{ results: AboutMeType[] }> =>
-      fetcher(`/api/aboutme?lang=${language}`),
+      fetcher(`/api/portfolio?type=aboutme&lang=${language}`),
   })
 
   useEffect(() => {
@@ -54,7 +54,7 @@ export const useActivities = () => {
   const query = useQuery({
     queryKey: ["activities"],
     queryFn: (): Promise<{ results: ActivityType[] }> =>
-      fetcher("/api/activities"),
+      fetcher("/api/portfolio?type=activities"),
   })
 
   useEffect(() => {
@@ -76,7 +76,7 @@ export const useAwards = () => {
   const query = useQuery({
     queryKey: ["awards", language],
     queryFn: (): Promise<{ results: AwardType[] }> =>
-      fetcher(`/api/awards?lang=${language}`),
+      fetcher(`/api/portfolio?type=awards&lang=${language}`),
   })
 
   useEffect(() => {
@@ -98,7 +98,7 @@ export const useCertificates = () => {
   const query = useQuery({
     queryKey: ["certificates", language],
     queryFn: (): Promise<{ results: CertificateType[] }> =>
-      fetcher(`/api/certificates?lang=${language}`),
+      fetcher(`/api/portfolio?type=certificates&lang=${language}`),
   })
 
   useEffect(() => {
@@ -120,7 +120,7 @@ export const useExperiences = () => {
   const query = useQuery({
     queryKey: ["experiences", language],
     queryFn: (): Promise<{ results: ExperienceType[] }> =>
-      fetcher(`/api/experiences?lang=${language}`),
+      fetcher(`/api/portfolio?type=experiences&lang=${language}`),
   })
 
   useEffect(() => {
@@ -142,7 +142,7 @@ export const useProjects = () => {
   const query = useQuery({
     queryKey: ["projects", language],
     queryFn: (): Promise<{ results: ProjectType[] }> =>
-      fetcher(`/api/projects?lang=${language}`),
+      fetcher(`/api/portfolio?type=projects&lang=${language}`),
   })
 
   useEffect(() => {
@@ -163,7 +163,7 @@ export const useSkills = () => {
   const query = useQuery({
     queryKey: ["skills"],
     queryFn: (): Promise<{ results: SkillType[] }> =>
-      fetcher("/api/skills"),
+      fetcher("/api/portfolio?type=skills"),
   })
 
   useEffect(() => {

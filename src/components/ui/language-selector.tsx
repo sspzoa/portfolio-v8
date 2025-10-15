@@ -36,7 +36,9 @@ const Container = styled.div`
   z-index: 50;
   @media (max-width: 768px) {
     top: 12px;
-    right: 12px;
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%);
   }
 `
 
@@ -50,10 +52,6 @@ const LanguageBar = styled.div`
   box-shadow: 0 4px 12px var(--components-translucent-secondary);
   border: 1px solid var(--line-outline);
   padding: 4px;
-  @media (max-width: 768px) {
-    flex-direction: column;
-    border-radius: 20px;
-  }
 `
 
 const LanguageButton = styled.button<{ isActive: boolean }>`

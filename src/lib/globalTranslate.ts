@@ -2,6 +2,8 @@ import { batchTranslateTexts, SupportedLanguage } from "@/lib/translate"
 import { generateHash } from "@/lib/hash"
 import { getTranslationFromCache, saveTranslationToCache } from "@/lib/mongodb"
 
+const translationPromiseCache = new Map<string, Promise<Map<string, string>>>()
+
 interface GlobalTranslationData {
   aboutme: Record<string, unknown>[]
   awards: Record<string, unknown>[]
@@ -27,7 +29,28 @@ export async function getGlobalTranslations(
   if (targetLang === "ko") return new Map()
 
   const globalHash = generateHash(data as unknown as Record<string, unknown>)
+  const cacheKey = `${targetLang}_${globalHash}`
 
+  if (translationPromiseCache.has(cacheKey)) {
+    return translationPromiseCache.get(cacheKey)!
+  }
+
+  const translationPromise = performGlobalTranslation(data, targetLang, globalHash)
+  translationPromiseCache.set(cacheKey, translationPromise)
+
+  try {
+    const result = await translationPromise
+    return result
+  } finally {
+    translationPromiseCache.delete(cacheKey)
+  }
+}
+
+async function performGlobalTranslation(
+  data: GlobalTranslationData,
+  targetLang: SupportedLanguage,
+  globalHash: string
+): Promise<Map<string, string>> {
   const cachedGlobal = await getTranslationFromCache(
     "projects",
     "global_translations",

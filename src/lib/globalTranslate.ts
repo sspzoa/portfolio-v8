@@ -35,7 +35,11 @@ export async function getGlobalTranslations(
     return translationPromiseCache.get(cacheKey)!
   }
 
-  const translationPromise = performGlobalTranslation(data, targetLang, globalHash)
+  const translationPromise = performGlobalTranslation(
+    data,
+    targetLang,
+    globalHash
+  )
   translationPromiseCache.set(cacheKey, translationPromise)
 
   try {

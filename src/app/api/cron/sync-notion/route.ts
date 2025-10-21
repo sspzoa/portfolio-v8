@@ -25,10 +25,9 @@ const DATABASE_IDS = {
 const SUPPORTED_LANGUAGES: SupportedLanguage[] = ["en", "ja"]
 
 export async function GET() {
+  const startTime = Date.now()
   try {
-    console.log("Deleting existing S3 portfolio images...")
     const deletedCount = await deleteAllPortfolioImages()
-    console.log(`Deleted ${deletedCount} existing images from S3`)
     const [
       aboutmeRes,
       awardsRes,
@@ -62,14 +61,32 @@ export async function GET() {
       ]),
     ])
 
+    const [
+      aboutmeData,
+      awardsData,
+      certificatesData,
+      experiencesData,
+      projectsData,
+      activitiesData,
+      skillsData,
+    ] = await Promise.all([
+      processImages(aboutmeRes.results),
+      processImages(awardsRes.results),
+      processImages(certificatesRes.results),
+      processImages(experiencesRes.results),
+      processImages(projectsRes.results),
+      processImages(activitiesRes.results),
+      processImages(skillsRes.results),
+    ])
+
     const data = {
-      aboutme: await processImages(aboutmeRes.results),
-      awards: await processImages(awardsRes.results),
-      certificates: await processImages(certificatesRes.results),
-      experiences: await processImages(experiencesRes.results),
-      projects: await processImages(projectsRes.results),
-      activities: await processImages(activitiesRes.results),
-      skills: await processImages(skillsRes.results),
+      aboutme: aboutmeData,
+      awards: awardsData,
+      certificates: certificatesData,
+      experiences: experiencesData,
+      projects: projectsData,
+      activities: activitiesData,
+      skills: skillsData,
     }
 
     await Promise.all([
@@ -84,15 +101,20 @@ export async function GET() {
 
     await updateTranslations(data)
 
+    const duration = ((Date.now() - startTime) / 1000).toFixed(2)
+    console.log(`Sync completed in ${duration}s`)
+
     return NextResponse.json({
       success: true,
       updated: Object.keys(data).length,
       timestamp: new Date().toISOString(),
+      duration: `${duration}s`,
     })
   } catch (error) {
-    console.error("Cron sync error:", error)
+    const duration = ((Date.now() - startTime) / 1000).toFixed(2)
+    console.log(`Sync failed in ${duration}s`)
     return NextResponse.json(
-      { error: "Failed to sync notion data" },
+      { error: "Failed to sync notion data", duration: `${duration}s` },
       { status: 500 }
     )
   }
@@ -284,10 +306,6 @@ async function processImages(
                           mimeType
                         )
 
-                        console.log(
-                          `Image migrated: ${fileObj.url} -> ${s3Url}`
-                        )
-
                         return {
                           ...file,
                           file: {
@@ -297,10 +315,6 @@ async function processImages(
                           },
                         }
                       } catch (error) {
-                        console.error(
-                          `Failed to migrate image ${fileObj.url}:`,
-                          error
-                        )
                         return file
                       }
                     }
@@ -343,8 +357,6 @@ async function processImages(
               } = await fetchImageFromNotion(fileObj.url)
               const s3Url = await uploadImageToS3(buffer, filename, mimeType)
 
-              console.log(`Cover image migrated: ${fileObj.url} -> ${s3Url}`)
-
               updatedItem.cover = {
                 ...cover,
                 file: {
@@ -353,12 +365,7 @@ async function processImages(
                   expiry_time: undefined,
                 },
               }
-            } catch (error) {
-              console.error(
-                `Failed to migrate cover image ${fileObj.url}:`,
-                error
-              )
-            }
+            } catch (error) {}
           }
         }
       }
@@ -387,8 +394,6 @@ async function processImages(
               } = await fetchImageFromNotion(fileObj.url)
               const s3Url = await uploadImageToS3(buffer, filename, mimeType)
 
-              console.log(`Icon image migrated: ${fileObj.url} -> ${s3Url}`)
-
               updatedItem.icon = {
                 ...icon,
                 file: {
@@ -397,12 +402,7 @@ async function processImages(
                   expiry_time: undefined,
                 },
               }
-            } catch (error) {
-              console.error(
-                `Failed to migrate icon image ${fileObj.url}:`,
-                error
-              )
-            }
+            } catch (error) {}
           }
         }
       }

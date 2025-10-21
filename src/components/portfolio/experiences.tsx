@@ -1,5 +1,5 @@
 import { Tile } from "@/components/ui/tile"
-import { usePortfolio } from "@/hooks/api"
+import { useExperiences } from "@/hooks/api"
 import Skeleton from "@/components/ui/skeleton"
 import { DescriptionText, DetailText, TitleText } from "@/components/ui/typo"
 import {
@@ -26,8 +26,7 @@ const formatDateRange = (startDate?: string, endDate?: string) => {
 }
 
 export function Experiences() {
-  const { data, isLoading, error } = usePortfolio()
-  const experiences = data?.experiences
+  const { data: experiences, isLoading, error } = useExperiences()
 
   if (isLoading)
     return (

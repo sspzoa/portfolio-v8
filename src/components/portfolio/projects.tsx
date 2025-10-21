@@ -1,5 +1,5 @@
 import { Tile } from "@/components/ui/tile"
-import { usePortfolio } from "@/hooks/api"
+import { useProjects } from "@/hooks/api"
 import Skeleton from "@/components/ui/skeleton"
 import styled from "@emotion/styled"
 import { atom, useAtom } from "jotai"
@@ -88,8 +88,7 @@ const ShowMoreButton = styled.button`
 `
 
 export function Projects() {
-  const { data, isLoading, error } = usePortfolio()
-  const projects = data?.projects
+  const { data: projects, isLoading, error } = useProjects()
   const [showSideProjects, setShowSideProjects] = useAtom(showSideProjectsAtom)
 
   if (isLoading)

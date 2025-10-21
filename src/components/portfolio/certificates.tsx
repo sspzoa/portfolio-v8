@@ -1,5 +1,5 @@
 import { Tile } from "@/components/ui/tile"
-import { usePortfolio } from "@/hooks/api"
+import { useCertificates } from "@/hooks/api"
 import Skeleton from "@/components/ui/skeleton"
 import { Card, Content, TileContainer } from "@/components/ui/layout"
 import { DescriptionText, TitleText } from "@/components/ui/typo"
@@ -13,8 +13,7 @@ const formatDate = (dateString?: string) => {
 }
 
 export function Certificates() {
-  const { data, isLoading, error } = usePortfolio()
-  const certificates = data?.certificates
+  const { data: certificates, isLoading, error } = useCertificates()
 
   if (isLoading)
     return (

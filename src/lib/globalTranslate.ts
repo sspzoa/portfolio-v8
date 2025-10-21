@@ -55,12 +55,7 @@ async function performGlobalTranslation(
   targetLang: SupportedLanguage,
   globalHash: string
 ): Promise<Map<string, string>> {
-  const cachedGlobal = await getTranslationFromCache(
-    "projects",
-    "global_translations",
-    targetLang,
-    globalHash
-  )
+  const cachedGlobal = await getTranslationFromCache(targetLang, globalHash)
 
   if (cachedGlobal) {
     return new Map(Object.entries(cachedGlobal as Record<string, string>))
@@ -96,8 +91,6 @@ async function performGlobalTranslation(
   })
 
   await saveTranslationToCache(
-    "projects",
-    "global_translations",
     targetLang,
     globalHash,
     Object.fromEntries(translationMap) as Record<string, unknown>

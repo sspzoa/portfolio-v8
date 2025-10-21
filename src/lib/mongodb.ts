@@ -25,7 +25,7 @@ export async function connectToDatabase(): Promise<Db> {
   }
 }
 
-export interface TranslationCache {
+export interface NotionCache {
   _id?: string
   contentType:
     | "aboutme"
@@ -33,7 +33,15 @@ export interface TranslationCache {
     | "certificates"
     | "experiences"
     | "projects"
-  itemId: string
+    | "activities"
+    | "skills"
+  data: Record<string, unknown>[]
+  createdAt: Date
+  updatedAt: Date
+}
+
+export interface TranslationCache {
+  _id?: string
   language: string
   originalHash: string
   translatedData: Record<string, unknown>
@@ -42,13 +50,6 @@ export interface TranslationCache {
 }
 
 export async function getTranslationFromCache(
-  contentType:
-    | "aboutme"
-    | "awards"
-    | "certificates"
-    | "experiences"
-    | "projects",
-  itemId: string,
   language: string,
   originalHash: string
 ): Promise<Record<string, unknown> | null> {
@@ -56,8 +57,6 @@ export async function getTranslationFromCache(
   const collection = db.collection<TranslationCache>("translationCache")
 
   const cached = await collection.findOne({
-    contentType,
-    itemId,
     language,
     originalHash,
   })
@@ -65,14 +64,20 @@ export async function getTranslationFromCache(
   return cached?.translatedData || null
 }
 
+export async function getGlobalTranslationFromCache(
+  language: string
+): Promise<Record<string, unknown> | null> {
+  const db = await connectToDatabase()
+  const collection = db.collection<TranslationCache>("translationCache")
+
+  const cached = await collection.findOne({
+    language,
+  })
+
+  return cached?.translatedData || null
+}
+
 export async function saveTranslationToCache(
-  contentType:
-    | "aboutme"
-    | "awards"
-    | "certificates"
-    | "experiences"
-    | "projects",
-  itemId: string,
   language: string,
   originalHash: string,
   translatedData: Record<string, unknown>
@@ -82,13 +87,9 @@ export async function saveTranslationToCache(
 
   await collection.replaceOne(
     {
-      contentType,
-      itemId,
       language,
     },
     {
-      contentType,
-      itemId,
       language,
       originalHash,
       translatedData,
@@ -97,4 +98,105 @@ export async function saveTranslationToCache(
     },
     { upsert: true }
   )
+}
+
+export async function getNotionCache(
+  contentType:
+    | "aboutme"
+    | "awards"
+    | "certificates"
+    | "experiences"
+    | "projects"
+    | "activities"
+    | "skills"
+): Promise<Record<string, unknown>[] | null> {
+  const db = await connectToDatabase()
+  const collection = db.collection<NotionCache>("notionCache")
+
+  const cached = await collection.findOne({
+    contentType,
+  })
+
+  return cached?.data || null
+}
+
+export async function saveNotionCache(
+  contentType:
+    | "aboutme"
+    | "awards"
+    | "certificates"
+    | "experiences"
+    | "projects"
+    | "activities"
+    | "skills",
+  data: Record<string, unknown>[]
+): Promise<void> {
+  const db = await connectToDatabase()
+  const collection = db.collection<NotionCache>("notionCache")
+
+  await collection.replaceOne(
+    { contentType },
+    {
+      contentType,
+      data,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    },
+    { upsert: true }
+  )
+}
+
+export async function getAllNotionData(): Promise<{
+  aboutme: Record<string, unknown>[]
+  awards: Record<string, unknown>[]
+  certificates: Record<string, unknown>[]
+  experiences: Record<string, unknown>[]
+  projects: Record<string, unknown>[]
+  activities: Record<string, unknown>[]
+  skills: Record<string, unknown>[]
+} | null> {
+  try {
+    const [
+      aboutme,
+      awards,
+      certificates,
+      experiences,
+      projects,
+      activities,
+      skills,
+    ] = await Promise.all([
+      getNotionCache("aboutme"),
+      getNotionCache("awards"),
+      getNotionCache("certificates"),
+      getNotionCache("experiences"),
+      getNotionCache("projects"),
+      getNotionCache("activities"),
+      getNotionCache("skills"),
+    ])
+
+    if (
+      !aboutme ||
+      !awards ||
+      !certificates ||
+      !experiences ||
+      !projects ||
+      !activities ||
+      !skills
+    ) {
+      return null
+    }
+
+    return {
+      aboutme,
+      awards,
+      certificates,
+      experiences,
+      projects,
+      activities,
+      skills,
+    }
+  } catch (error) {
+    console.error("Error getting all notion data:", error)
+    return null
+  }
 }

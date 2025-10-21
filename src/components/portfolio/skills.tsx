@@ -1,5 +1,5 @@
 import { Tile } from "@/components/ui/tile"
-import { usePortfolio } from "@/hooks/api"
+import { useSkills } from "@/hooks/api"
 import Skeleton from "@/components/ui/skeleton"
 import Image from "next/image"
 import styled from "@emotion/styled"
@@ -26,8 +26,7 @@ const CategorySection = styled.div`
 `
 
 export function Skills() {
-  const { data, isLoading, error } = usePortfolio()
-  const skills = data?.skills
+  const { data: skills, isLoading, error } = useSkills()
 
   if (isLoading)
     return (

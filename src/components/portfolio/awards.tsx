@@ -1,5 +1,5 @@
 import { Tile } from "@/components/ui/tile"
-import { usePortfolio } from "@/hooks/api"
+import { useAwards } from "@/hooks/api"
 import Skeleton from "@/components/ui/skeleton"
 import { DescriptionText, TitleText } from "@/components/ui/typo"
 import { Card, Content, TileContainer } from "@/components/ui/layout"
@@ -13,8 +13,7 @@ const formatDate = (dateString?: string) => {
 }
 
 export function Awards() {
-  const { data, isLoading, error } = usePortfolio()
-  const awards = data?.awards
+  const { data: awards, isLoading, error } = useAwards()
 
   if (isLoading)
     return (

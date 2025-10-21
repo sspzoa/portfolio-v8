@@ -44,7 +44,7 @@ Example format:
 3. [Third translated text]`
 
     const response = await openai.chat.completions.create({
-      model: "gpt-4o",
+      model: "gpt-5-mini",
       messages: [
         {
           role: "system",
@@ -55,7 +55,6 @@ Example format:
           content: numberedTexts,
         },
       ],
-      temperature: 0.1,
     })
 
     const translatedContent = response.choices[0].message.content || ""

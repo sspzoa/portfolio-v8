@@ -26,7 +26,6 @@ const SUPPORTED_LANGUAGES: SupportedLanguage[] = ["en", "ja"]
 
 export async function GET() {
   try {
-    // 기존 S3 파일들 삭제
     console.log("Deleting existing S3 portfolio images...")
     const deletedCount = await deleteAllPortfolioImages()
     console.log(`Deleted ${deletedCount} existing images from S3`)
@@ -250,7 +249,6 @@ async function processImages(
     items.map(async (item: Record<string, unknown>) => {
       const updatedItem = { ...item }
 
-      // properties 처리
       if (item.properties && typeof item.properties === "object") {
         const properties = item.properties as Record<string, unknown>
 
@@ -321,7 +319,6 @@ async function processImages(
         }
       }
 
-      // cover 이미지 처리 (프로젝트의 커버 이미지)
       if (item.cover && typeof item.cover === "object") {
         const cover = item.cover as Record<string, unknown>
 
@@ -366,7 +363,6 @@ async function processImages(
         }
       }
 
-      // icon 이미지 처리 (페이지 아이콘)
       if (item.icon && typeof item.icon === "object") {
         const icon = item.icon as Record<string, unknown>
 

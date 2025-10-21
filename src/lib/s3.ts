@@ -75,11 +75,9 @@ export async function fetchImageFromNotion(url: string): Promise<{
 
   const buffer = await response.arrayBuffer()
 
-  // URL에서 파일명 추출 (쿼리 파라미터 제거)
   const urlParts = url.split("/").pop()?.split("?")[0] || "image"
   let filename = urlParts
 
-  // 파일 확장자가 없으면 content-type에서 추가
   const contentType = response.headers.get("content-type") || "image/png"
   if (!filename.includes(".")) {
     const extension = contentType.split("/")[1]?.split(";")[0] || "png"

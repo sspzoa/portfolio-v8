@@ -40,7 +40,7 @@ export async function uploadImageToR2(
   filename: string,
   contentType: string = "image/png"
 ): Promise<string> {
-  const key = `portfolio-images/${Date.now()}-${filename}`
+  const key = `portfolio-images/${Date.now()}`
 
   const command = new PutObjectCommand({
     Bucket: process.env.R2_BUCKET_NAME,

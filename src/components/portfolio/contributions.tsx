@@ -35,25 +35,7 @@ export function Contributions() {
         rel="noreferrer noopener"
         href="https://github.com/sspzoa"
       >
-        <GitHubCalendar
-          username="sspzoa"
-          theme={{
-            light: [
-              "var(--components-fill-standard-secondary)",
-              "var(--core-accent-translucent)",
-              "var(--core-accent)",
-              "var(--core-accent)",
-              "var(--core-accent)",
-            ],
-            dark: [
-              "var(--components-fill-standard-secondary)",
-              "var(--core-accent-translucent)",
-              "var(--core-accent)",
-              "var(--core-accent)",
-              "var(--core-accent)",
-            ],
-          }}
-        />
+        <GitHubCalendar username="sspzoa" />
       </Container>
     </Tile>
   )

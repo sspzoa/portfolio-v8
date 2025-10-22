@@ -297,12 +297,10 @@ async function processImages(
                       try {
                         const {
                           buffer,
-                          filename,
                           contentType: mimeType,
                         } = await fetchImageFromNotion(fileObj.url)
                         const r2Url = await uploadImageToR2(
                           buffer,
-                          filename,
                           mimeType
                         )
 
@@ -352,10 +350,9 @@ async function processImages(
             try {
               const {
                 buffer,
-                filename,
                 contentType: mimeType,
               } = await fetchImageFromNotion(fileObj.url)
-              const r2Url = await uploadImageToR2(buffer, filename, mimeType)
+              const r2Url = await uploadImageToR2(buffer, mimeType)
 
               updatedItem.cover = {
                 ...cover,
@@ -389,10 +386,9 @@ async function processImages(
             try {
               const {
                 buffer,
-                filename,
                 contentType: mimeType,
               } = await fetchImageFromNotion(fileObj.url)
-              const r2Url = await uploadImageToR2(buffer, filename, mimeType)
+              const r2Url = await uploadImageToR2(buffer, mimeType)
 
               updatedItem.icon = {
                 ...icon,

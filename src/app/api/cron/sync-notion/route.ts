@@ -295,14 +295,9 @@ async function processImages(
                       !fileObj.url.includes(process.env.R2_PUBLIC_URL || "")
                     ) {
                       try {
-                        const {
-                          buffer,
-                          contentType: mimeType,
-                        } = await fetchImageFromNotion(fileObj.url)
-                        const r2Url = await uploadImageToR2(
-                          buffer,
-                          mimeType
-                        )
+                        const { buffer, contentType: mimeType } =
+                          await fetchImageFromNotion(fileObj.url)
+                        const r2Url = await uploadImageToR2(buffer, mimeType)
 
                         return {
                           ...file,
@@ -348,10 +343,8 @@ async function processImages(
             !fileObj.url.includes(`${process.env.S3_BUCKET_NAME}.s3`)
           ) {
             try {
-              const {
-                buffer,
-                contentType: mimeType,
-              } = await fetchImageFromNotion(fileObj.url)
+              const { buffer, contentType: mimeType } =
+                await fetchImageFromNotion(fileObj.url)
               const r2Url = await uploadImageToR2(buffer, mimeType)
 
               updatedItem.cover = {
@@ -384,10 +377,8 @@ async function processImages(
             !fileObj.url.includes(`${process.env.S3_BUCKET_NAME}.s3`)
           ) {
             try {
-              const {
-                buffer,
-                contentType: mimeType,
-              } = await fetchImageFromNotion(fileObj.url)
+              const { buffer, contentType: mimeType } =
+                await fetchImageFromNotion(fileObj.url)
               const r2Url = await uploadImageToR2(buffer, mimeType)
 
               updatedItem.icon = {

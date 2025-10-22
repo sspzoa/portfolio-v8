@@ -7,10 +7,10 @@ import {
 } from "@/lib/mongodb"
 import { batchTranslateTexts, SupportedLanguage } from "@/lib/translate"
 import {
-  uploadImageToS3,
+  uploadImageToR2,
   fetchImageFromNotion,
   deleteAllPortfolioImages,
-} from "@/lib/s3"
+} from "@/lib/r2"
 
 const DATABASE_IDS = {
   aboutme: "25fcc9b72a9c801ba124c5d2158a7f84",
@@ -292,7 +292,7 @@ async function processImages(
                       typeof fileObj.url === "string" &&
                       (fileObj.url.includes("prod-files-secure.s3") ||
                         fileObj.url.includes("notion.so")) &&
-                      !fileObj.url.includes(`${process.env.S3_BUCKET_NAME}.s3`)
+                      !fileObj.url.includes(process.env.R2_PUBLIC_URL || "")
                     ) {
                       try {
                         const {
@@ -300,7 +300,7 @@ async function processImages(
                           filename,
                           contentType: mimeType,
                         } = await fetchImageFromNotion(fileObj.url)
-                        const s3Url = await uploadImageToS3(
+                        const r2Url = await uploadImageToR2(
                           buffer,
                           filename,
                           mimeType
@@ -310,7 +310,7 @@ async function processImages(
                           ...file,
                           file: {
                             ...fileObj,
-                            url: encodeURI(s3Url),
+                            url: encodeURI(r2Url),
                             expiry_time: undefined,
                           },
                         }
@@ -355,13 +355,13 @@ async function processImages(
                 filename,
                 contentType: mimeType,
               } = await fetchImageFromNotion(fileObj.url)
-              const s3Url = await uploadImageToS3(buffer, filename, mimeType)
+              const r2Url = await uploadImageToR2(buffer, filename, mimeType)
 
               updatedItem.cover = {
                 ...cover,
                 file: {
                   ...fileObj,
-                  url: encodeURI(s3Url),
+                  url: encodeURI(r2Url),
                   expiry_time: undefined,
                 },
               }
@@ -392,13 +392,13 @@ async function processImages(
                 filename,
                 contentType: mimeType,
               } = await fetchImageFromNotion(fileObj.url)
-              const s3Url = await uploadImageToS3(buffer, filename, mimeType)
+              const r2Url = await uploadImageToR2(buffer, filename, mimeType)
 
               updatedItem.icon = {
                 ...icon,
                 file: {
                   ...fileObj,
-                  url: encodeURI(s3Url),
+                  url: encodeURI(r2Url),
                   expiry_time: undefined,
                 },
               }

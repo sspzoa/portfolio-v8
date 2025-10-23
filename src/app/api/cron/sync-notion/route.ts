@@ -25,11 +25,11 @@ const DATABASE_IDS = {
 const SUPPORTED_LANGUAGES: SupportedLanguage[] = ["en", "ja"]
 
 export async function GET(request: NextRequest) {
-  const authHeader = request.headers.get('authorization');
-  const cronSecret = process.env.CRON_SECRET;
+  const authHeader = request.headers.get("authorization")
+  const cronSecret = process.env.CRON_SECRET
 
   if (cronSecret && authHeader !== `Bearer ${cronSecret}`) {
-    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 })
   }
 
   const startTime = Date.now()

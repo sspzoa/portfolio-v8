@@ -1,4 +1,4 @@
-import { NextResponse } from "next/server"
+import { NextRequest, NextResponse } from "next/server"
 import { generateHash } from "@/lib/hash"
 import {
   saveNotionCache,
@@ -24,7 +24,14 @@ const DATABASE_IDS = {
 
 const SUPPORTED_LANGUAGES: SupportedLanguage[] = ["en", "ja"]
 
-export async function GET() {
+export async function GET(request: NextRequest) {
+  const authHeader = request.headers.get('authorization');
+  const cronSecret = process.env.CRON_SECRET;
+
+  if (cronSecret && authHeader !== `Bearer ${cronSecret}`) {
+    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+  }
+
   const startTime = Date.now()
   try {
     const deletedCount = await deleteAllPortfolioImages()

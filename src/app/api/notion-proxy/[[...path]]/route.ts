@@ -10,27 +10,25 @@ const NOTION_BASE_URL = (
 const NOTION_VERSION = process.env.NOTION_VERSION || "2022-02-22"
 const DEFAULT_DATABASE_ID = process.env.NOTION_DATABASE_ID
 
-export const runtime = "nodejs"
-
 export async function GET(
   request: NextRequest,
-  context: { params: RouteParams }
+  { params }: { params: Promise<RouteParams> }
 ) {
-  return proxyRequest(request, context.params)
+  return proxyRequest(request, await params)
 }
 
 export async function POST(
   request: NextRequest,
-  context: { params: RouteParams }
+  { params }: { params: Promise<RouteParams> }
 ) {
-  return proxyRequest(request, context.params)
+  return proxyRequest(request, await params)
 }
 
 export async function PATCH(
   request: NextRequest,
-  context: { params: RouteParams }
+  { params }: { params: Promise<RouteParams> }
 ) {
-  return proxyRequest(request, context.params)
+  return proxyRequest(request, await params)
 }
 
 async function proxyRequest(request: NextRequest, params: RouteParams) {

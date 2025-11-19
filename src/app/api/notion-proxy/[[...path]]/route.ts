@@ -77,16 +77,12 @@ async function proxyRequest(request: NextRequest, params: RouteParams) {
 }
 
 function resolveToken(request: NextRequest): string | null {
-  const authHeader = request.headers.get("authorization")
+  const authHeader = request.headers.get("Authorization")
   if (authHeader) {
     const [, token] = authHeader.split(" ")
     if (token?.trim()) {
       return token.trim()
     }
-  }
-  const customHeader = request.headers.get("x-notion-token")
-  if (customHeader?.trim()) {
-    return customHeader.trim()
   }
   if (process.env.NOTION_API_KEY?.trim()) {
     return process.env.NOTION_API_KEY.trim()
